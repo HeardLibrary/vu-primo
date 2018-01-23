@@ -43,8 +43,7 @@ This custom View folder can be downloaded from your Primo Back Office, by follow
 
 8.  From command line, run the command : `npm install` (This should install all node modules needed for gulp.)
 
-    ![npm install image](./help_files/npmInstall.png "Running npm install")
-
+    
 9.  Edit Gulp configuration file's <i>proxy server</i> setting, found at <b>gulp/config.js</b> : `var PROXY_SERVER = http://your-server:your-port` (Make sure to use your real Sandbox or Production Primo Front-End URL.) Note that for SSL environments (HTTPS) define the server as: `var PROXY_SERVER = https://your-server:443`
 
 10. Populate your custom View package folder in the custom package folder ("...primo-explore\custom"), by downloading the view code files from your Primo Back Office to start a new package folder. (if you have already defined a view package and loaded it to the BO - make sure you download it or else you will not see, and may overwrite, your previous changes.)
