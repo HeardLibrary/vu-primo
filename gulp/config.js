@@ -138,10 +138,10 @@ var SERVERS = {
  * For SSL environments (https), the port number (443) must be included.
  *
  * Examples:
- *   var PROXY_SERVER = 'http://abc-primo.hosted.exlibrisgroup.com'
+ *   var PROXY_SERVER = 'https://dev-dl.library.vanderbilt.edu:443'
  *   var PROXY_SERVER = 'https://abc-primo.hosted.exlibrisgroup.com:443'
  */
-var PROXY_SERVER = 'http://your-server:your-port';
+var PROXY_SERVER = 'https://van-primosb.hosted.exlibrisgroup.com:443';
 
 
 let buildParams = {
