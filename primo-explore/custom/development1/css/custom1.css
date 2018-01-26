@@ -1,0 +1,50 @@
+
+
+/*Uncomment the follwoing lines to move facets to the left*/
+
+/*
+prm-search > md-content.md-primoExplore-theme .main {
+    display: -webkit-flex; !* Safari *!
+    -webkit-flex-flow: row-reverse wrap; !* Safari 6.1+ *!
+    display: flex;
+    flex-flow: row-reverse wrap;
+
+}
+.screen-gt-sm .sidebar{
+    webkit-flex: 0 0 15%;
+    flex: 0 0 15%;
+}
+*/
+
+.prm-primary-bg.prm-hue1, prm-atoz-search-bar.prm-hue1, prm-browse-search-bar.prm-hue1, prm-collection-gallery-header .prm-hue1.collection-header-inner, prm-search-bar.prm-hue1, prm-spinner.prm-hue1.overlay-cover.light-on-dark:after, prm-tags-search-bar.prm-hue1, prm-topbar .top-nav-bar {
+    background-color: #000000;
+}
+
+
+.hoverable-over-dark, .md-button.button-over-dark, prm-main-menu[menu-type=full] .md-button.md-focused, prm-main-menu[menu-type=full] .md-button .md-input-container-dummy>.md-select-dummy:focus, prm-main-menu[menu-type=full] .md-button:focus, prm-main-menu[menu-type=full] .md-button:hover, prm-main-menu[menu-type=full] .md-button md-select:focus, prm-main-menu[menu-type=full] .overlay-menu-item.md-focused, prm-main-menu[menu-type=full] .overlay-menu-item .md-input-container-dummy>.md-select-dummy:focus, prm-main-menu[menu-type=full] .overlay-menu-item:focus, prm-main-menu[menu-type=full] .overlay-menu-item:hover, prm-main-menu[menu-type=full] .overlay-menu-item md-select:focus, prm-main-menu[menu-type=full] md-card:focus, prm-main-menu[menu-type=full] md-card:hover, prm-topbar .md-button, prm-user-area .md-button.user-menu-button, prm-user-area md-fab-toolbar ._md-fab-action-item .md-button, prm-user-area md-fab-toolbar ._md-fab-action-item md-input-container, prm-user-area md-fab-toolbar .md-fab-action-item .md-button, prm-user-area md-fab-toolbar .md-fab-action-item md-input-container {
+    color: #DDA85B;
+   }
+
+.prm-primary-bg, prm-atoz-search-bar, prm-browse-search-bar, prm-collection-gallery-header .collection-header-inner, prm-search-bar, prm-spinner.overlay-cover.light-on-dark:after, prm-tags-search-bar {
+    color: #000;
+    background-color: #ffffff;
+}
+prm-atoz-search-bar .search-switch-buttons .md-button.switch-to-advanced, prm-browse-search-bar .search-switch-buttons .md-button.switch-to-advanced, prm-search-bar .search-switch-buttons .md-button.switch-to-advanced, prm-tags-search-bar .search-switch-buttons .md-button.switch-to-advanced {
+    color: #000;
+}
+
+prm-main-menu[menu-type=menu] .md-button {
+    padding: 0 .75em;
+    max-width: 12em;
+    font-size: 1em;
+}
+
+.section-title-header, .sidebar-header {
+    background-color: #ffffff;
+;
+}
+
+
+.layout-align-start-center {
+background-color:#ffffff;
+}
