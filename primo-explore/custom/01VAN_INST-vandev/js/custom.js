@@ -3,6 +3,7 @@
 'use strict';
 
 var app = angular.module('viewCustom',['angularLoad','customActions','sendSms']);
+
 app.component('prmLogoAfter', {
     bindings: { },
     template: `<div class="hello-world"><span>Hello World</span></div>`
@@ -62,7 +63,7 @@ angular.module('sendSms').component('ocaSendSms', {
       return window.appConfig['system-configuration']['Activate Captcha [Y/N]'] == 'Y';
     };
     this.getCaptchaPublicKey = function () {
-      return window.appConfig['system-configuration']['Public Captcha Key'];
+      return window.appConfig['system-configuration']['Public Captcha Key'] = '6Lf0HFUUAAAAAMGJ-pJW0qUt5IwJIrA6mciurTSM';
     };
     this.setResponse = function (response) {
       return _this.gCaptchaResponse = response;
