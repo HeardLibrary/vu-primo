@@ -24,6 +24,7 @@ app.value('smsOptions', {
     },
     smsCarriers: {
       'ATT': 'txt.att.net',
+	  'Sprint': 'messaging.sprintpcs.com',
       'T-Mobile': 'tmomail.net',
       'Verizon': 'vtext.com',
     },
@@ -60,7 +61,7 @@ angular.module('sendSms').component('ocaSendSms', {
       return _this.telRegEx.test(_this.phoneNumber) && _this.carrier;
     };
     this.isCaptcha = function () {
-      return window.appConfig['system-configuration']['Activate Captcha [Y/N]'] == 'Y';
+      return window.appConfig['system-configuration']['Activate Captcha [Y/N]'] = 'Y';
     };
     this.getCaptchaPublicKey = function () {
       return window.appConfig['system-configuration']['Public Captcha Key'] = '6Lf0HFUUAAAAAMGJ-pJW0qUt5IwJIrA6mciurTSM';
