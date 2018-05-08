@@ -2,11 +2,10 @@
 "use strict";
 'use strict';
 
-var app = angular.module('viewCustom',['angularLoad']);
 
-/**
+
+
 var app = angular.module('viewCustom',['angularLoad','customActions','sendSms']);
-**/
 
 /**
 app.component('prmLogoAfter', {
