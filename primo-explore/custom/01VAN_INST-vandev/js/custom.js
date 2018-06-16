@@ -6,7 +6,7 @@
   "use strict";
   'use strict';
 
-  var app = angular.module('viewCustom', ['angularLoad', 'customActions']);
+  var app = angular.module('viewCustom', ['angularLoad', 'customActions', 'sendSms']);
 
   /**
   app.component('prmLogoAfter', {
@@ -15,18 +15,7 @@
   });
   **/
 
-  app.component('prmActionListAfter', {
-  template: `<custom-action  name="Text_me"
-                            label="Text Me "
-                            index=0
-                            icon="ic_smartphone_24px"
-                            icon-set="hardware"
-                            link="https://apps.library.vanderbilt.edu/services/text.php?title={pnx.control.recordid}&call={pnx.search.subject}" />`
-})
-
-  
-  
- // app.component('prmActionListAfter', { template: '<sms-action />' });
+  app.component('prmActionListAfter', { template: '<sms-action />' });
 
   app.value('smsOptions', {
     smsAction: {
@@ -86,7 +75,7 @@
           _this.sendEmailService.sendEmail([_this.phoneNumber + '@' + _this.carrier], // addresses
           '', // subject
           '', // note
-          [_this.item], // itemsavailability
+          [_this.item], // items
           _this.gCaptchaResponse // captcha
           ).then(function (msg) {
             return console.log('sms successfully sent', msg);
