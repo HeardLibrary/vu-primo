@@ -26,28 +26,19 @@ app.component('prmSearchBarAfter', {
 
 	
 /** Start Grinnel **/
-/* add SMS button */
-    app.component('prmActionListAfter', {
+/** add SMS button. Display only if a call nubmer is available **/
+    app.component('prmBriefResultAfter', {
 		bindings: { parentCtrl: '<' },
 		controller: 'smsController',
 		template: `
-			<li class="md-nav-item layout-column" role="option" aria-selected="true" layout="column" tabindex="-1" id="text_me">
 			
 				<button class="md-icon-button custom-button md-button md-primoExplore-theme md-ink-ripple text-call-number-button" type="button" aria-label="Send call number for item via text" title="Text call number"  ng-if="$ctrl.parentCtrl.item.delivery.bestlocation.callNumber" ng-click="$ctrl.showDialog(ev);">
-					<md-icon class="md-primoExplore-theme" aria-hidden="true">
-						<svg width="100%" height="100%" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet" focusable="false">
-							<path d="M15.89,2H9.11A2.12,2.12,0,0,0,7,4.11V19.89A2.12,2.12,0,0,0,9.11,22h6.78A2.12,2.12,0,0,0,18,19.89V4.11A2.12,2.12,0,0,0,15.89,2ZM14,19.22a.78.78,0,0,1-.78.78H11.78a.78.78,0,0,1-.78-.78v-.44a.78.78,0,0,1,.78-.78h1.44a.78.78,0,0,1,.78.78ZM16,16H9V4h7Z"></path>
-						</svg>
-					</md-icon>
-					<prm-icon-after parent-ctrl="$ctrl"></prm-icon-after></prm-icon><span class="button-text" translate="fulldisplay.command.Text Me">
-Text Me</span>
-		</div>
-</span>
-<div class="md-ripple-container" style="">
-</div>
-</button>
+					
+				
+				</button>
 		`
     });
+	
 	
 
     app.controller('smsController', ['angularLoad', '$scope', '$mdDialog', '$sce', '$http', function(angularLoad, $scope, $mdDialog, $sce, $http) {
