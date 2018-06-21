@@ -18,7 +18,7 @@ app.component('prmSearchBarAfter', {
 /** Custom SMS **/
 /** add SMS button. Display only if a call number is available **/
 
-    app.component('prmBriefResultAfter', {
+    app.component('prmSearchResultAvailablityLineAfter', {
 		bindings: { parentCtrl: '<' },
 		controller: 'smsController',
 		template: `
