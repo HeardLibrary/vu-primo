@@ -16,7 +16,19 @@ app.component('prmSearchBarAfter', {
 
 
 /** Custom SMS **/
+/** add SMS button. Display only if a call number is available **/
 
+    app.component('prmBriefResultAfter', {
+		bindings: { parentCtrl: '<' },
+		controller: 'smsController',
+		template: `
+			
+				<button class="md-icon-button custom-button md-button md-primoExplore-theme md-ink-ripple text-call-number-button" type="button" aria-label="Send call number for item via text" title="Text call number"  ng-if="$ctrl.parentCtrl.item.delivery.bestlocation.callNumber" ng-click="$ctrl.showDialog(ev);">
+					
+				Text Me
+				</button>
+		`
+    });
 	
 
 
@@ -26,18 +38,8 @@ app.component('prmSearchBarAfter', {
 
 	
 /** Start Grinnel **/
-/** add SMS button. Display only if a call nubmer is available **/
-    app.component('prmBriefResultAfter', {
-		bindings: { parentCtrl: '<' },
-		controller: 'smsController',
-		template: `
-			
-				<button class="md-icon-button custom-button md-button md-primoExplore-theme md-ink-ripple text-call-number-button" type="button" aria-label="Send call number for item via text" title="Text call number"  ng-if="$ctrl.parentCtrl.item.delivery.bestlocation.callNumber" ng-click="$ctrl.showDialog(ev);">
-					
-				
-				</button>
-		`
-    });
+
+
 	
 	
 
@@ -49,8 +51,16 @@ app.component('prmSearchBarAfter', {
             } else {
                 author = '';
             }
+			var title;
+				title = this.parentCtrl.item.pnx.display.title[0];
+			var callnum;
+				callnum = this.parentCtrl.item.delivery.bestlocation.callNumber;
+			var mainloc;
+				mainloc = this.parentCtrl.item.delivery.bestlocation.mainLocation;
+				
 var dialogContent = '<md-dialog-content style="padding-top: 30px; padding-left: 30px; padding-right: 30px; padding-bottom: 10px;">' +
 				'<h3>' + this.parentCtrl.item.pnx.display.title[0] + '</h3>' +
+				'<h3>xxx' + callnum + 'xxxx</h3>' +
 				'<p>Send the title, location and call number of this item to your mobile phone.<br />' +
 				'<form name="this.textForm">' +
 				'<div layout="row" class="layout-row" style="padding-top:15px; padding-bottom:10px;"><div layout="row" layout-align="center" layout-fill class="layout-fill layout-align-center-stretch layout-row"><label for="phoneno">Enter your cell number:  </label> <input style=\"border-bottom: 1px solid rgba(0,0,0,.14);" type="text" name="phoneno" ng-model="this.phoneno" id="phoneno" size="10"></div></div>' +
@@ -66,9 +76,13 @@ var dialogContent = '<md-dialog-content style="padding-top: 30px; padding-left: 
 					'<option value="vzwpix.com">Verizon</option>' +
 					'<option value="vmpix.com">Virgin Mobile</option>' +
 				'</select></div></div>' +
+				'<input type="hidden"  name="title" value="' + title + '">' +
+				'<input type="hidden"  name="author" value="' + author + '">' +
+				'<input type="hidden"  name="callnum" value="' + callnum + '">' +
+				'<input type="hidden"  name="mainloc" value="' + mainloc + '">' +
 			    '</form></p></md-dialog-content>' +
 				'<md-dialog-actions>' +
-				'<md-button ng-click="sendText(\'' + this.parentCtrl.item.pnx.display.title[0].replace(/'/g, "qqqqqqqq").replace(/"/g, "iiiiiiii") + '\', \'' + author.replace(/'/g, "qqqqqqqq").replace(/"/g, "iiiiiiii") + '\', \'' + this.parentCtrl.item.delivery.bestlocation.subLocation.replace(/'/g, "qqqqqqqq").replace(/"/g, "iiiiiiii") + '\', \'' + this.parentCtrl.item.delivery.bestlocation.callNumber.replace(/'/g, "qqqqqqqq").replace(/"/g, "iiiiiiii") + '\')">SEND</md-button>' +
+				'<md-button ng-click="sendText(title, author, mainloc,callnum)">SEND</md-button>' +
 				'<md-button ng-click="close()">CLOSE</md-button>' + /* This code gets parsed multiple times, and I couldn't get any normal method of escaping the single and double quotes to persist through all of the parsings. The PHP script that sends the text message replaces the qqqqqqqq and iiiiiiii strings with single and double quotes, respectively, before sending */
 				'</md-dialog-actions>'
 				;
@@ -79,15 +93,15 @@ var dialogContent = '<md-dialog-content style="padding-top: 30px; padding-left: 
 				escapeToClose: true,
 				scope: angular.extend($scope.$new(), { 
 					close: function() {$mdDialog.cancel();},
-					sendText: function(title, author, location, callnumber) {
+					sendText: function(title, author, mainloc, callnum) {
 						var message = {
 							method: 'POST',
 							url: 'https://apps.library.vanderbilt.edu/services/sms/send.php',
 							data: {
 								title: title,
 								author: author,
-								location: location,
-								callnumber: callnumber,
+								location: mainloc,
+								callnumber: callnum,
 								phoneno: this.phoneno,
 								provider: this.provider
 							}
