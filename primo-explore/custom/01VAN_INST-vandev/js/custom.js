@@ -8,12 +8,12 @@
     var app = angular.module('viewCustom', ['angularLoad']);
 
 /** Show development environment **/ 
-/**
+
 app.component('prmSearchBarAfter', {
     bindings: { },
     template: '<div class="hello-world"><span>Development Environment</span></div>'
 });
-**/
+
 /** End show development environment **/
 
 
@@ -33,8 +33,43 @@ app.component('prmSearchBarAfter', {
     });
 
 **/
+/** basic form **/
+app.component('prmLocationItemsAfter',{
+    bindings: {parentCtrl: '<'},
+    controller: 'ServiceDetailsAfterController',
+	template: '<form ng-if="$ctrl.callNumber" id="primo-text" method="post" action="https://apps.library.vanderbilt.edu/services/sms/sms.php" target="_blank">\
+	<input type="text" name="newloc" value="{{$ctrl.localCode}} ">\
+    <input type="hidden" name="lang" value="en_US">\
+    <input type="submit" id="textme" value="Text Me">\
+    <input type="hidden" value="{{$ctrl.title}}" name="title">\
+    <input type="hidden" value="{{$ctrl.localName}}" name="location">\
+    <input type="hidden" value="{{$ctrl.callNumber}}" name="call"></form> \
+	<form ng-if="$ctrl.localCode==PEABODY" id="primo-specol" method="post" action="https://apps.library.vanderbilt.edu/services/speccol.php" target="_blank"> \
+	<input type="submit" id="textme" value="New form">\
+	</form>'});
 
+	
+	app.controller('ServiceDetailsAfterController', [function () {
+    var vm = this;
+    vm.url = document.location || '';
+    var pnx = vm.parentCtrl.item.pnx || false;
+    vm.callNumber = vm.parentCtrl.item.delivery.bestlocation.callNumber ;
+    vm.localName = vm.parentCtrl.item.delivery.bestlocation.mainLocation;
+	vm.localCode = vm.parentCtrl.item.delivery.bestlocation.locationCode;
+    vm.format = pnx.display.type[0] || '';
+    /** if(vm.format === 'article'){
+        vm.source = pnx.display.ispartof[0]+' by '+pnx.addata.au[0];
+    } else {
+        vm.source = 'Published by '+pnx.addata.pub[0]+' and authored by '+pnx.addata.au[0]+' in '+pnx.addata.date[0];
+    }
+	**/
+    vm.title = pnx.display.title[0] || '';
+    vm.url = document.location || '';
+    vm.$onInit = function () {
+    }
+}]);
 
+/** End basic Form **/
 
 /** End Custom SMS **/
 
