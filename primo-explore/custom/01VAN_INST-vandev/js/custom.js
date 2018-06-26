@@ -32,13 +32,24 @@ app.component('prmRequestServicesAfter',{
     <input type="hidden" value="{{$ctrl.title}}" name="title">\
     <input type="hidden" value="{{$ctrl.localName}}" name="location">\
     <input type="hidden" value="{{$ctrl.callNumber}}" name="call"></form> <br/> \
-	\
 	<form ng-if="$ctrl.localCode === \'ANNEX\'"  method="post" action="https://www.library.vanderbilt.edu/forms/custannex.php" target="_blank"> \
 	<input type="hidden" name="lang" value="en_US">\
     <input type="hidden" value="{{$ctrl.title}}" name="title">\
     <input type="hidden" value="{{$ctrl.localName}}" name="location">\
     <input type="hidden" value="{{$ctrl.callNumber}}" name="call"> \
 	<input type="submit" name="submit" value="Annex-form"> </form> \
+	<form ng-if="$ctrl.localCode === \'SPEC-COLL\'"  method="post" action="https://www.library.vanderbilt.edu/forms/archives.php" target="_blank"> \
+	<input type="hidden" name="lang" value="en_US">\
+    <input type="hidden" value="{{$ctrl.title}}" name="title">\
+    <input type="hidden" value="{{$ctrl.localName}}" name="location">\
+    <input type="hidden" value="{{$ctrl.callNumber}}" name="call"> \
+	<input type="submit" name="submit" value="Special Collections"> </form> \
+	<form ng-if="$ctrl.localCode === \'21NORTH\'"  method="post" action="https://www.library.vanderbilt.edu/forms/archives.php" target="_blank"> \
+	<input type="hidden" name="lang" value="en_US">\
+    <input type="hidden" value="{{$ctrl.title}}" name="title">\
+    <input type="hidden" value="{{$ctrl.localName}}" name="location">\
+    <input type="hidden" value="{{$ctrl.callNumber}}" name="call"> \
+	<input type="submit" name="submit" value="Special Collections"> </form> \
 	'});
 
 	
@@ -64,6 +75,13 @@ app.component('prmRequestServicesAfter',{
 
 /** End basic Form **/
 
+
+var app = angular.module("myApp", []);
+app.directive("w3TestDirective", function() {
+    return {
+        template : "<h1>Made by a directive!</h1>"
+    };
+});
 /** End Custom SMS **/
 
 	
