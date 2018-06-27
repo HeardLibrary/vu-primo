@@ -26,7 +26,7 @@ app.component('prmSearchBarAfter', {
 app.component('prmRequestServicesAfter',{
     bindings: {parentCtrl: '<'},
     controller: 'FormServiceController',
-	template: '<form ng-if="$ctrl.callNumber" id="primo-text" method="post" action="https://apps.library.vanderbilt.edu/services/sms/sms.php" target="_blank">\
+	template: '<form ng-if="$ctrl.callNumber" id="primo-text" method="post" action="https://library2018.library.vanderbilt.edu/forms/textme.php" target="_blank">\
     <input type="hidden" name="lang" value="en_US">\
     <input type="submit" id="textme" value="Text Me">\
     <input type="hidden" value="{{$ctrl.title}}" name="title">\
