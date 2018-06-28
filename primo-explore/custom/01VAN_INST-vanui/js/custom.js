@@ -8,12 +8,12 @@
     var app = angular.module('viewCustom', ['angularLoad','customActions']);
 
 /** Show development environment **/ 
-/**
+
 app.component('prmSearchBarAfter', {
     bindings: { },
     template: '<div class="hello-world"><span>Development Environment</span></div>'
 });
-**/
+
 /** End show development environment **/
 
 
@@ -46,13 +46,13 @@ app.component('prmRequestServicesAfter',{
     <input type="hidden" value="{{$ctrl.title}}" name="title">\
     <input type="hidden" value="{{$ctrl.localName}}" name="location">\
     <input type="hidden" value="{{$ctrl.callNumber}}" name="call"> \
-	<input type="submit" name="submit" value="Request from Annex"> </form> \
+	<input type="submit" name="submit" class="formbutton" value="Request from Annex"> </form> \
 	<form ng-if="$ctrl.localCode === \'SPEC-COLL\'"  method="post" action="https://www.library.vanderbilt.edu/forms/archives.php" target="_blank"> \
 	<input type="hidden" name="lang" value="en_US">\
     <input type="hidden" value="{{$ctrl.title}}" name="title">\
     <input type="hidden" value="{{$ctrl.localName}}" name="location">\
     <input type="hidden" value="{{$ctrl.callNumber}}" name="call"> \
-	<input type="submit" name="submit" value="Request for Use in the Reading Room"> </form> \
+	<input type="submit" name="submit"  class="formbutton" value="Request for Use in the Reading Room"> </form> \
 	<form ng-if="$ctrl.localCode === \'21NORTH\'"  method="post" action="https://www.library.vanderbilt.edu/forms/archives.php" target="_blank"> \
 	<input type="hidden" name="lang" value="en_US">\
     <input type="hidden" value="{{$ctrl.title}}" name="title">\

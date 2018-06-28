@@ -2,6 +2,33 @@
 /* Generated from colors.json */
 /* primary color hook */
 
+/**
+input, prm-form-field md-input-container textarea {
+    border-style: none;
+    font-family: inherit;
+  color: #993d1b;
+    margin-top: 20px;
+}
+**/
+.formbutton { 
+  color: #993d1b; 
+
+  margin-top: 20px;
+}
+
+
+/* Start Altmetrics */
+
+.full-view-section.loc-altmetrics{
+    background-color: #f3f3f3;
+    margin-top:0px;
+    padding-left: 3em;
+}
+
+/* End Altmetrics */
+
+
+
 .md-button {
   color: #3a3a3a;
 }
@@ -2069,4 +2096,13 @@ prm-facet-range prm-icon {
 
 
 
-/
+/* helloWorld.css begin */
+
+.hello-world {
+    color: #E65400;
+    font-weight: bold;
+    margin-top: -3.5em;
+    margin-left: 1em;
+}
+
+/* helloWorld.css end */
