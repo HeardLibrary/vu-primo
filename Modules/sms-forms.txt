@@ -1,0 +1,33 @@
+
+/**  SMS form **/
+
+   app.component('prmActionListAfter', {
+	bindings: {parentCtrl: '<'},
+	controller: 'FormServiceController',
+	template: "<custom-action name=\"text_me\"\n                            label=\"Text Me\"\n                            index=0\n                            icon=\"ic_smartphone_24px\"\n                            icon-set=\"hardware\"\n                            link=\"https://library2018.library.vanderbilt.edu/forms/textme.php?call={{$ctrl.callNumber}}&location={{$ctrl.localCode}}&title={pnx.display.title}\" />"
+    });
+
+
+
+  /** Start  Generic controller for form variables **/  
+	app.controller('FormServiceController', [function () {
+    var vm = this;
+    vm.url = document.location || '';
+    var pnx = vm.parentCtrl.item.pnx || false;
+    vm.callNumber = vm.parentCtrl.item.delivery.bestlocation.callNumber;
+    vm.localName = vm.parentCtrl.item.delivery.bestlocation.mainLocation;
+	vm.localCode = vm.parentCtrl.item.delivery.bestlocation.libraryCode;
+    vm.format = pnx.display.type[0] || '';
+    /** if(vm.format === 'article'){
+        vm.source = pnx.display.ispartof[0]+' by '+pnx.addata.au[0];
+    } else {
+        vm.source = 'Published by '+pnx.addata.pub[0]+' and authored by '+pnx.addata.au[0]+' in '+pnx.addata.date[0];
+    }
+	**/
+    vm.title = pnx.display.title[0] || '';
+    vm.url = document.location || '';
+    vm.$onInit = function () {
+    }
+}]);
+  
+  /** End Generic controller for form variables **/ 
