@@ -8,12 +8,12 @@
     var app = angular.module('viewCustom', ['angularLoad','customActions']);
 
 /** Show development environment **/ 
-
+/**
 app.component('prmSearchBarAfter', {
     bindings: { },
     template: '<div class="hello-world"><span>Development Environment</span></div>'
 });
-
+**/
 /** End show development environment **/
 
 
