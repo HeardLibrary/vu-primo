@@ -70,12 +70,6 @@ app.component('prmRequestServicesAfter',{
     vm.localName = vm.parentCtrl.item.delivery.bestlocation.mainLocation;
 	vm.localCode = vm.parentCtrl.item.delivery.bestlocation.libraryCode;
     vm.format = pnx.display.type[0] || '';
-    /** if(vm.format === 'article'){
-        vm.source = pnx.display.ispartof[0]+' by '+pnx.addata.au[0];
-    } else {
-        vm.source = 'Published by '+pnx.addata.pub[0]+' and authored by '+pnx.addata.au[0]+' in '+pnx.addata.date[0];
-    }
-	**/
     vm.title = pnx.display.title[0] || '';
     vm.url = document.location || '';
 	let rootScope = $scope.$root;
