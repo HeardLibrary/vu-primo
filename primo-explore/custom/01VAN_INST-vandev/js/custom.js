@@ -8,12 +8,12 @@
     var app = angular.module('viewCustom', ['angularLoad','customActions']);
 
 /** Show development environment **/ 
-/**
+
 app.component('prmSearchBarAfter', {
     bindings: { },
     template: '<div class="hello-world"><span>Development Environment</span></div>'
 });
-**/
+
 /** End show development environment **/
 
 
@@ -40,7 +40,7 @@ app.component('prmRequestServicesAfter',{
 	app.component('prmLocationItemAfter',{
     bindings: {parentCtrl: '<'},
     controller: 'FormServiceController',
-	template: ' <span class="formbutton"> \
+	template: '<span class="formbutton"> testing --- {{$ctrl.user}} --- {{$ctrl.userGroup}} \
 	<form ng-if="$ctrl.localCode === \'ANNEX\'"  method="post" action="https://www.library.vanderbilt.edu/forms/custannex.php" target="_blank"> \
 	<input type="hidden" name="lang" value="en_US">\
     <input type="hidden" value="{{$ctrl.title}}" name="title">\
@@ -62,7 +62,7 @@ app.component('prmRequestServicesAfter',{
 	'});
 
 	
-	app.controller('FormServiceController', [function () {
+	app.controller('FormServiceController', [function ($scope) {
     var vm = this;
     vm.url = document.location || '';
     var pnx = vm.parentCtrl.item.pnx || false;
@@ -78,6 +78,14 @@ app.component('prmRequestServicesAfter',{
 	**/
     vm.title = pnx.display.title[0] || '';
     vm.url = document.location || '';
+	let rootScope = $scope.$root;
+	let uSMS=rootScope.$$childHead.$ctrl.userSessionManagerService;
+	let jwtData = uSMS.jwtUtilService.getDecodedToken();
+	 console.log(jwtData);
+	var userGroup=parseInt(jwtData.userGroup);
+	var user=jwtData.user;
+	var check = whitelistGroups.indexOf(userGroup);
+			
     vm.$onInit = function () {
     }
 }]);
