@@ -13,8 +13,4 @@
     "primo-explore-custom-actions": "^3.0.0",
     "primo-explore-send-sms": "^1.1.0"
   },
-  "devDependencies": {
-    "primo-explore-dom": "0.0.10",
-    "primo-explore-my-ill": "^1.0.0"
-  }
 }

@@ -62,7 +62,7 @@ app.component('prmRequestServicesAfter',{
 	'});
 
 	
-	app.controller('FormServiceController', [function ($scope, $element, $http) {
+	app.controller('FormServiceController', [function ($scope) {
     var vm = this;
     vm.url = document.location || '';
     var pnx = vm.parentCtrl.item.pnx || false;
@@ -72,7 +72,7 @@ app.component('prmRequestServicesAfter',{
     vm.format = pnx.display.type[0] || '';
     vm.title = pnx.display.title[0] || '';
     vm.url = document.location || '';
-	let rootScope = $scope.$root;
+	var rootScope = $scope.$root;
 	var uSMS=rootScope.$$childHead.$ctrl.userSessionManagerService;
 	var jwtData = uSMS.jwtUtilService.getDecodedToken();
 	 console.log(jwtData);
@@ -81,30 +81,7 @@ app.component('prmRequestServicesAfter',{
 	//var check = whitelistGroups.indexOf(userGroup);
 			
     vm.$onInit = function () {
-  			/* from: https://github.com/mehmetc/primo-explore-dom/blob/master/js/primo/explore/helper.js */
-	  		let rootScope = $scope.$root;
-	  		let uSMS=rootScope.$$childHead.$ctrl.userSessionManagerService;
-	  		let jwtData = uSMS.jwtUtilService.getDecodedToken();
-	  		console.log(jwtData);
-	 		  var userGroup=parseInt(jwtData.userGroup);
-	  		var user=jwtData.user;
-	  		var check = whitelistGroups.indexOf(userGroup);
-			  if (check>=0){
-				      $scope.illBox=true;
-              $scope.showGlobe=true;
-              $scope.boxTitle=illiadOptions.boxTitle;
-              $scope.illiadURL=illiadOptions.illiadURL;
-              console.log($scope.boxTitle);
-              var url=illiadOptions.remoteScript;
-              var response=illService.getILLiadData(url, user).then(function(response){
-                console.log(response);
-                $scope.articles=response.data.Articles;
-                $scope.requests=response.data.Requests;
-                if ($scope.requests || $scope.articles){$scope.showGlobe=false;}
-              });
-			  }
-  		}
-    
+    }
 }]);
 
 /** End basic Form **/
@@ -387,8 +364,6 @@ app.component('prmFullViewAfter', {
 
 /** End Browzine **/
 /** End Browzine **/
-
-
 
 
 	
