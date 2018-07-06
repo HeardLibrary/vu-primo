@@ -62,8 +62,8 @@ app.component('prmRequestServicesAfter',{
 	'});
 
 	
-	app.controller('FormServiceController', [function ($scope, $element, $http) {
-    var vm = this;
+	app.controller('FormServiceController', [function ($scope, $rootScope, $element, $http) {
+    var vm = $rootScope.Scope;
     vm.url = document.location || '';
     var pnx = vm.parentCtrl.item.pnx || false;
     vm.callNumber = vm.parentCtrl.item.delivery.bestlocation.callNumber ;
