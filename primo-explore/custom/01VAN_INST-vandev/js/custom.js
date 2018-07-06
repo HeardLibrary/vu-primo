@@ -16,6 +16,17 @@ app.component('prmSearchBarAfter', {
 
 /** End show development environment **/
 
+/** Working with the image **/
+
+   app.component('prmlogo', {
+	bindings: { },
+	template: '<div class="product-logo" id="banner" aria-label="Library home page"><a ng-href="http://www.library.vanderbilt.edu/" ng-click="$ctrl.logoClick()" class="md-primoExplore-theme" href="http://www.library.vanderbilt.edu/"><img class="logo-image"  ng-src="custom/01VAN_INST-vandev/img/heard-logo.svg" src="custom/01VAN_INST-vandev/img/heard-logo.svg" alt="LogoAlt"></a>zzzzzzzzzzzz</div>'
+    });
+	
+
+/** End image work **/
+
+
 
 /** Start Custom SMS **/
 
@@ -62,8 +73,8 @@ app.component('prmRequestServicesAfter',{
 	'});
 
 	
-	app.controller('FormServiceController', [function ($scope, $rootScope, $element, $http) {
-    var vm = $rootScope.Scope;
+	app.controller('FormServiceController', [function () {
+    var vm = this;
     vm.url = document.location || '';
     var pnx = vm.parentCtrl.item.pnx || false;
     vm.callNumber = vm.parentCtrl.item.delivery.bestlocation.callNumber ;
@@ -72,37 +83,16 @@ app.component('prmRequestServicesAfter',{
     vm.format = pnx.display.type[0] || '';
     vm.title = pnx.display.title[0] || '';
     vm.url = document.location || '';
-	let rootScope = $scope.$root;
+	/** let rootScope = $scope.$root;
 	var uSMS=rootScope.$$childHead.$ctrl.userSessionManagerService;
 	var jwtData = uSMS.jwtUtilService.getDecodedToken();
 	 console.log(jwtData);
 	var userGroup=parseInt(jwtData.userGroup);
 	var user=jwtData.user;
+	**/
 	//var check = whitelistGroups.indexOf(userGroup);
 			
     vm.$onInit = function () {
-  			/* from: https://github.com/mehmetc/primo-explore-dom/blob/master/js/primo/explore/helper.js */
-	  		let rootScope = $scope.$root;
-	  		let uSMS=rootScope.$$childHead.$ctrl.userSessionManagerService;
-	  		let jwtData = uSMS.jwtUtilService.getDecodedToken();
-	  		console.log(jwtData);
-	 		  var userGroup=parseInt(jwtData.userGroup);
-	  		var user=jwtData.user;
-	  		var check = whitelistGroups.indexOf(userGroup);
-			  if (check>=0){
-				      $scope.illBox=true;
-              $scope.showGlobe=true;
-              $scope.boxTitle=illiadOptions.boxTitle;
-              $scope.illiadURL=illiadOptions.illiadURL;
-              console.log($scope.boxTitle);
-              var url=illiadOptions.remoteScript;
-              var response=illService.getILLiadData(url, user).then(function(response){
-                console.log(response);
-                $scope.articles=response.data.Articles;
-                $scope.requests=response.data.Requests;
-                if ($scope.requests || $scope.articles){$scope.showGlobe=false;}
-              });
-			  }
   		}
     
 }]);
@@ -388,7 +378,29 @@ app.component('prmFullViewAfter', {
 /** End Browzine **/
 /** End Browzine **/
 
+ /** Start Libchat (based Laura Guy's solution) **/
 
+/** 
+ angular
+  .module('chat', ['angularLoad'])
+  .component('addChat', {
+      controller: ['angularLoad', function (angularLoad) {
+          this.$onInit = function () {
+            angularLoad.loadScript('https://v2.libanswers.com/load_chat.php?hash=c58be3a8ecd194602bebd50fcfe6d49b')
+          }
+      }]
+  })
+ **/
+ 
+
+ (function() {
+
+	var lc = document.createElement('script'); lc.type = 'text/javascript'; lc.async = 'true';
+    lc.src =  'https://v2.libanswers.com/load_chat.php?hash=c58be3a8ecd194602bebd50fcfe6d49b';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(lc, s);
+    })();
+	
+/** End Libchat **/
 
 
 	

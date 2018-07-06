@@ -11,10 +11,12 @@ input, prm-form-field md-input-container textarea {
 }
 **/
 
+/** working on logo fix **/
 prm-logo .logo-image, prm-logo img {
-    max-height: 300%;
-    max-width: 300%;
+    max-height: 100%;
+    
 }
+/**End Logo **/
 
 .formbutton { 
   color: #993d1b; 
