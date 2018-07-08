@@ -12,21 +12,16 @@ input, prm-form-field md-input-container textarea {
 **/
 
 /** working on logo fix **/
-
-/** Hide the existing logo **/
-.product-logo { display: none; }
-
-.product-logo-local {
-    cursor: pointer;
-    height: 100%;
-    padding: .85em;
+prm-logo .logo-image, prm-logo img {
+    max-height: 900%;
+    
 }
 
-/** Local image **/
-
-product-logo-local .logo-image-local, prm-logo img {
+.flex-50, .layout-row > .flex-50 {
+    max-width: 75%;
     max-height: 100%;
-	max-width: 240px;
+    box-sizing: border-box;
+    flex: 1 1 75%;
 }
 
 

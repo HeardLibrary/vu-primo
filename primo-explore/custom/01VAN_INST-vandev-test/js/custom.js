@@ -18,24 +18,11 @@ app.component('prmSearchBarAfter', {
 
 /** Working with the image **/
 
-
-app.controller('prmLogoAfterController', [function() {
-    var vm = this;
-    vm.getIconLink = getIconLink;
-    function getIconLink() {
-      return vm.parentCtrl.iconLink;
-    }
-  }]);
-  app.component('prmLogoAfter', {
-    bindings: {
-      parentCtrl: '<'
-    },
-    controller: '',
-    template: '<div class="product-logo-local"  id="banner" aria-label="Library home page">  <a href="http://www.cnn.com" class="md-primoExplore-theme" ><img class="logo-image-local" ng-src="custom/01VAN_INST-vandev/img/heard-logo.svg" src="custom/01VAN_INST-vandev/img/heard-logo.svg" alt="LogoAlt"></a></div>'
-  });
-  
- 
-
+   app.component('prmlogo', {
+	bindings: { },
+	template: '<div class="product-logo" id="banner" aria-label="Library home page"><a ng-href="http://www.library.vanderbilt.edu/" ng-click="$ctrl.logoClick()" class="md-primoExplore-theme" href="http://www.library.vanderbilt.edu/"><img class="logo-image"  ng-src="custom/01VAN_INST-vandev/img/heard-logo.svg" src="custom/01VAN_INST-vandev/img/heard-logo.svg" alt="LogoAlt"></a>zzzzzzzzzzzz</div>'
+    });
+	
 
 /** End image work **/
 
