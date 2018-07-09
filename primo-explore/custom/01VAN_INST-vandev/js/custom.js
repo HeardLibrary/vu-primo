@@ -18,7 +18,7 @@ app.component('prmSearchBarAfter', {
 
 /** Working with the image **/
 
-
+/**
 app.controller('prmLogoAfterController', [function() {
     var vm = this;
     vm.getIconLink = getIconLink;
@@ -30,13 +30,19 @@ app.controller('prmLogoAfterController', [function() {
     bindings: {
       parentCtrl: '<'
     },
-    template: '<div class="product-logo-local"  id="banner" aria-label="Library home page">  <a href="https://www.library.vanderbilt.edu" class="md-primoExplore-theme" ><img class="logo-image-local" ng-src="custom/01VAN_INST-vandev/img/VU_JAHL_stack_horz_R.svg" src="custom/01VAN_INST-vandev/img/VU_JAHL_stack_horz_R.svg" alt="LogoAlt"></a></div>'
+    template: '<div class="product-logo-local"  id="banner" aria-label="Library home page">  <a href="https://www.library.vanderbilt.edu" class="md-primoExplore-theme" ><img class="logo-image-local" ng-src="custom/01VAN_INST-vandev/img/heard-logo.svg" src="custom/01VAN_INST-vandev/img/heard-logo.svg" alt="LogoAlt"></a></div>'
   });
   
- 
+ **/
 
 
 /** End image work **/
+
+
+/** Add link to Browzine  in A-Z **/
+
+
+/** End add link to Browzine in A-Z **/
 
 
 
