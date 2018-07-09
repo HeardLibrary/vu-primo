@@ -24,11 +24,20 @@ input, prm-form-field md-input-container textarea {
 
 /** Local image **/
 
-product-logo-local .logo-image-local, prm-logo img {
+product-logo-local .logo-image-local, prm-logo-local img {
     max-height: 100%;
 	max-width: 240px;
 }
 
+@media screen and (max-width: 1100px) {
+
+.logo-image-local {
+                position:inherit;
+                clip: rect(0px, 400px, 60px, 90px);
+                max-width: 400px;
+                /*left: -100px; */
+}
+}
 
 /**End Logo **/
 
