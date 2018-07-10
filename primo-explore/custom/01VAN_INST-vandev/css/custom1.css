@@ -14,9 +14,9 @@ input, prm-form-field md-input-container textarea {
 /** working on logo fix **/
 
 /** Hide the existing logo **/
-/**
+
 .product-logo { display: none; }
-**/
+
 
 .product-logo-local {
     cursor: pointer;
@@ -26,20 +26,21 @@ input, prm-form-field md-input-container textarea {
 
 /** Local image **/
 /**
-product-logo-local .logo-image-local, prm-logo-local img {
+.product-logo-local .logo-image-local, prm-logo img {
     max-height: 100%;
-	max-width: 240px;
+	max-width: 200%;
 }
 **/
 
-@media screen and (max-width: 1100px) {
+@media screen and (max-width: 100%) {
 
-.logo-image {
+.logo-image-local {
                 position:inherit;
-                clip: rect(0px, 400px, 60px, 90px);
-                
-                /*left: -100px; */
+                clip: rect(0px, 394px, 60px, 90px);
+                width: 394px;
+              /**  left: -100px; **/
 }
+
 }
 
 /**End Logo **/

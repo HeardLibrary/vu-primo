@@ -26,14 +26,19 @@ app.controller('prmLogoAfterController', [function() {
       return vm.parentCtrl.iconLink;
     }
   }]);
-  app.component('prmLogoAfter', {
+ **/
+ 
+ app.component('prmLogoAfter', {
     bindings: {
       parentCtrl: '<'
     },
-    template: '<div class="product-logo-local"  id="banner" aria-label="Library home page">  <a href="https://www.library.vanderbilt.edu" class="md-primoExplore-theme" ><img class="logo-image-local" ng-src="custom/01VAN_INST-vandev/img/heard-logo.svg" src="custom/01VAN_INST-vandev/img/heard-logo.svg" alt="LogoAlt"></a></div>'
+    template: '<div class="product-logo-local"  id="banner" aria-label="Library home page"> <a href="https://www.library.vanderbilt.edu" class="md-primoExplore-theme" ><img class="logo-image-local" ng-src="custom/01VAN_INST-vandev/img/vulstack.svg" src="custom/01VAN_INST-vandev/img/vulstack.svg" alt="LogoAlt"></a></div>'
   });
   
- **/
+
+
+ 
+ 
 
 
 /** End image work **/
