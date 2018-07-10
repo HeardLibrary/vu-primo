@@ -49,6 +49,10 @@ app.controller('prmLogoAfterController', [function() {
 
 /** End add link to Browzine in A-Z **/
 
+app.component('prmAtozSearchBarAfter', {
+	bindings: {parentCtrl: '<'},
+	template: '<div class=browzine"> <a href="https://browzine.com/libraries/519"><img src="https://apps.library.vanderbilt.edu/images/browzinetop.png"  "alt="Browzine - Top Journals" /></a></div>'
+	   });
 
 
 /** Start Custom SMS **/

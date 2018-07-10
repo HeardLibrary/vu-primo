@@ -11,17 +11,32 @@ input, prm-form-field md-input-container textarea {
 }
 **/
 
+
+/**Browzine**
+
+   .browzine img{
+        display:block;
+        margin-left: auto;
+        margin-right: auto;
+		width:141px;
+		height: 50px;
+    }
+	
+/**End Browzine**/
+
+
 /** working on logo fix **/
 
 /** Hide the existing logo **/
 
-.product-logo { display: none; }
+ .product-logo { display: none; } 
 
 
 .product-logo-local {
     cursor: pointer;
     height: 100%;
     padding: .85em;
+	flex: 1 0 50%;
 }
 
 /** Local image **/
