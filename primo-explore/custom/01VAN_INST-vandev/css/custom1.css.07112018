@@ -11,67 +11,52 @@ input, prm-form-field md-input-container textarea {
 }
 **/
 
+
+/**Browzine**
+
+   .browzine img{
+        display:block;
+        margin-left: auto;
+        margin-right: auto;
+		width:141px;
+		height: 50px;
+    }
+	
+/**End Browzine**/
+
+
 /** working on logo fix **/
 
 /** Hide the existing logo **/
-.product-logo { display: none; }
+
+ .product-logo { display: none; } 
 
 
 .product-logo-local {
     cursor: pointer;
     height: 100%;
     padding: .85em;
-}
+	flex: 1 1 50%;
+
 
 /** Local image **/
-
-.product-logo-local .logo-image-local img {
+/**
+.product-logo-local .logo-image-local, prm-logo img {
     max-height: 100%;
-	max-width: 240px;
+	max-width: 200%;
+}
+**/
+
+@media screen and (max-width: 100%) {
+
+.logo-image-local {
+                position:inherit;
+                clip: rect(0px, 394px, 60px, 90px);
+                width: 394px;
+              /**  left: -100px; **/
 }
 
-
-prm-logo .logo-image, prm-logo img {
-    max-height: 100%;
 }
-
-		/* Mobile logo */
-		prm-logo div.product-logo-local {
-			/*display: flex;*/
-			background: url(https://apps.library.vanderbilt.edu/images/heard-stack.svg) no-repeat 0 0;
-			width: 190px;
-			/*height: 100px;*/
-			height: 45px;
-			display: block;
-			/*text-indent: 100%;*/
-			white-space: nowrap;
-			overflow: hidden;
-			margin-top: 3px;
-			margin-left: 0px;
-			/*padding: 0.25em;*/
-		}
-
-		/* Desktop logo*/
-		 prm-topbar prm-logo {
-			 max-width: 400px;
-		}
-		@media (min-width: 601px) { /*min-width: 100em*/
-			prm-logo div.product-logo-local {
-				background: url(https://apps.library.vanderbilt.edu/images/heard-logo.svg) no-repeat 0 0;
-				width: 400px;
-				/*height: 200px;*/
-				height: 50px;
-				margin-top: 5px;
-				margin-left: 5px;
-			}
-			prm-logo .logo-image, prm-logo img {
-				width: 200px;
-				height: 100px;
-
-			}
-	   }
-
-
 
 /**End Logo **/
 

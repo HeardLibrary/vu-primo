@@ -8,17 +8,17 @@
     var app = angular.module('viewCustom', ['angularLoad','customActions']);
 
 /** Show development environment **/ 
-/**
+
 app.component('prmSearchBarAfter', {
     bindings: { },
     template: '<div class="hello-world"><span>Development Environment</span></div>'
 });
-**/
+
 /** End show development environment **/
 
 /** Working with the image **/
 
-
+/**
 app.controller('prmLogoAfterController', [function() {
     var vm = this;
     vm.getIconLink = getIconLink;
@@ -26,19 +26,33 @@ app.controller('prmLogoAfterController', [function() {
       return vm.parentCtrl.iconLink;
     }
   }]);
-  app.component('prmLogoAfter', {
+ **/
+ 
+ app.component('prmLogoAfter', {
     bindings: {
       parentCtrl: '<'
     },
-    controller: '',
-    template: '<div class="product-logo-local"  id="banner" aria-label="Library home page">  <a href="https://www.library.vanderbilt.edu" class="md-primoExplore-theme" ></a></div>'
+    template: '<div class="product-logo-local"  id="banner" aria-label="Library home page"> <a href="https://www.library.vanderbilt.edu" class="md-primoExplore-theme" ><img class="logo-image-local" ng-src="custom/01VAN_INST-vandev/img/vulstack.svg" src="custom/01VAN_INST-vandev/img/vulstack.svg" alt="LogoAlt"></a></div>'
   });
   
+
+  
+ 
  
 
 
 /** End image work **/
 
+
+/** Add link to Browzine  in A-Z **/
+
+
+/** End add link to Browzine in A-Z **/
+
+app.component('prmAtozSearchBarAfter', {
+	bindings: {parentCtrl: '<'},
+	template: '<div class=browzine"> <a href="https://browzine.com/libraries/519"><img src="https://apps.library.vanderbilt.edu/images/browzinetop.png"  "alt="Browzine - Top Journals" /></a></div>'
+	   });
 
 
 /** Start Custom SMS **/
