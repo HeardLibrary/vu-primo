@@ -1,0 +1,78 @@
+Hide the prmLogo and added new logo(s)
+
+
+CSS
+
+/** Hide the existing logo **/
+.product-logo { display: none; }
+
+
+.product-logo-local {
+    cursor: pointer;
+    height: 100%;
+    padding: .85em;
+}
+
+/** Local image **/
+
+
+
+prm-logo .logo-image, prm-logo img {
+    max-height: 100%;
+}
+
+		/* Mobile logo */
+		prm-logo div.product-logo-local {
+			/*display: flex;*/
+			padding: .85em;
+			background: url(https://apps.library.vanderbilt.edu/images/heard-stack.svg) no-repeat 0 0;
+			width: 190px;
+			/*height: 100px;*/
+			height: 45px;
+			display: block;
+			/*text-indent: 100%;*/
+			white-space: nowrap;
+			overflow: hidden;
+			margin-top: 3px;
+			margin-left: 0px;
+			/*padding: 0.25em;*/
+		}
+
+		/* Desktop logo*/
+		 prm-topbar prm-logo {
+			 max-width: 400px;
+		}
+		@media (min-width: 601px) { /*min-width: 100em*/
+			prm-logo div.product-logo-local {
+				background: url(https://apps.library.vanderbilt.edu/images/heard-logo.svg) no-repeat 0 0;
+				width: 400px;
+				/*height: 200px;*/
+				height: 50px;
+				margin-top: 5px;
+				margin-left: 5px;
+			}
+			prm-logo .logo-image, prm-logo img {
+				width: 200px;
+				height: 100px;
+
+			}
+	   }
+
+
+
+/**End Logo **/
+
+---------------------------------
+custom.js
+
+/** Working with the image **/
+
+
+  app.component('prmLogoAfter', {
+    bindings: {
+      parentCtrl: '<'
+    },
+    template: '<a href="https://www.library.vanderbilt.edu" class="md-primoExplore-theme" ><div class="product-logo-local"  id="banner" aria-label="Library home page">  </div></a>'
+  });
+  
+/** End image work **/

@@ -7,14 +7,30 @@
 
     var app = angular.module('viewCustom', ['angularLoad','customActions']);
 
-/** Show development environment **/ 
-/**
-app.component('prmSearchBarAfter', {
-    bindings: { },
-    template: '<div class="hello-world"><span>Development Environment</span></div>'
-});
-**/
-/** End show development environment **/
+/** Browzine Logo **/
+
+  app.component('prmAtozSearchBarAfter', {
+    bindings: {
+      parentCtrl: '<'
+    },
+    template: '<div tabindex="-1" role="search" layout="row" class="layout-row"><div id="browzinelogo"> <a href="http://browzine.com.proxy.library.vanderbilt.edu/libraries/519/subjects" class="md-primoExplore-theme" ><img src="https://apps.library.vanderbilt.edu/images/browzinetop.png" width="141px" height="50px" target="_new"></a></div></div>'
+  });
+  
+
+/** End Browzine Logo **/
+/** Working with the image **/
+
+
+  app.component('prmLogoAfter', {
+    bindings: {
+      parentCtrl: '<'
+    },
+    template: '<a href="https://www.library.vanderbilt.edu" class="md-primoExplore-theme" ><div class="product-logo-local"  id="banner" aria-label="Library home page">  </div></a>'
+  });
+  
+/** End image work **/
+
+
 
 
 /** Start Custom SMS **/
