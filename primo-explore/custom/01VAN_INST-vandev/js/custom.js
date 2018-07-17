@@ -414,6 +414,20 @@ app.component('prmFullViewAfter', {
     lc.src =  'https://v2.libanswers.com/load_chat.php?hash=c58be3a8ecd194602bebd50fcfe6d49b';
     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(lc, s);
     })();
+
+
+/** Ask a librarian only **/
+ /**
+ 
+ (function() {
+
+	var lc = document.createElement('script'); lc.type = 'text/javascript'; lc.async = 'true';
+    lc.src =  'https://api2.libanswers.com/1.0/widgets/8299';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(lc, s);
+    })();
+**/
+/** End ask a librarian only**/
+
 	
 /** End Libchat **/
 

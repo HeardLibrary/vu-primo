@@ -358,8 +358,8 @@ app.component('prmFullViewAfter', {
   window.browzine = {
     api: "https://public-api.thirdiron.com/public/v1/libraries/519",
     apiKey: "a38db48a-1772-44f3-b8e3-df9f826cf881",
-    primoJournalBrowZineWebLinkText: "View Journal Contents",
-    primoArticleBrowZineWebLinkText: "View Issue Contents",
+    primoJournalBrowZineWebLinkText: "Browse Journal Contents",
+    primoArticleBrowZineWebLinkText: "Browse Issue Contents",
   };
  
   browzine.script = document.createElement("script");
@@ -379,6 +379,43 @@ app.component('prmFullViewAfter', {
 /** End Browzine **/
 /** End Browzine **/
 
+ /** Start Libchat (based Laura Guy's solution) **/
+
+/** 
+ angular
+  .module('chat', ['angularLoad'])
+  .component('addChat', {
+      controller: ['angularLoad', function (angularLoad) {
+          this.$onInit = function () {
+            angularLoad.loadScript('https://v2.libanswers.com/load_chat.php?hash=c58be3a8ecd194602bebd50fcfe6d49b')
+          }
+      }]
+  })
+ **/
+ 
+
+ (function() {
+
+	var lc = document.createElement('script'); lc.type = 'text/javascript'; lc.async = 'true';
+    lc.src =  'https://v2.libanswers.com/load_chat.php?hash=c58be3a8ecd194602bebd50fcfe6d49b';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(lc, s);
+    })();
+
+
+/** Ask a librarian only **/
+ /**
+ 
+ (function() {
+
+	var lc = document.createElement('script'); lc.type = 'text/javascript'; lc.async = 'true';
+    lc.src =  'https://api2.libanswers.com/1.0/widgets/8299';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(lc, s);
+    })();
+**/
+/** End ask a librarian only**/
+
+	
+/** End Libchat **/
 
 	
 	/** Close function from line 1 **/

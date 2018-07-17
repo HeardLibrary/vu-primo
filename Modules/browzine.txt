@@ -3,8 +3,8 @@
   window.browzine = {
     api: "https://public-api.thirdiron.com/public/v1/libraries/519",
     apiKey: "a38db48a-1772-44f3-b8e3-df9f826cf881",
-    primoJournalBrowZineWebLinkText: "View Journal Contents",
-    primoArticleBrowZineWebLinkText: "View Issue Contents",
+    primoJournalBrowZineWebLinkText: "Browse Journal Contents",
+    primoArticleBrowZineWebLinkText: "Browse Issue Contents",
   };
  
   browzine.script = document.createElement("script");
