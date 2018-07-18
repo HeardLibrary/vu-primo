@@ -407,6 +407,13 @@ app.component('prmFullViewAfter', {
   })
  **/
  
+ /*** TESTIN NEW **/
+ 
+ 
+ 
+ 
+ /** End testing new **/
+ 
 
  (function() {
 
@@ -414,7 +421,6 @@ app.component('prmFullViewAfter', {
     lc.src =  'https://v2.libanswers.com/load_chat.php?hash=c58be3a8ecd194602bebd50fcfe6d49b';
     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(lc, s);
     })();
-
 
 /** Ask a librarian only **/
  /**
