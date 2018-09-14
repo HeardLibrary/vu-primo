@@ -7,6 +7,17 @@
 
     var app = angular.module('viewCustom', ['angularLoad','customActions']);
 
+/** Show development environment **/ 
+
+app.component('prmSearchBarAfter', {
+    bindings: { },
+    template: '<div class="hello-world"><span>Development Environment</span></div>'
+});
+
+/** End show development environment **/
+
+
+	
 /** Browzine Logo **/
 
   app.component('prmAtozSearchBarAfter', {
@@ -18,6 +29,11 @@
   
 
 /** End Browzine Logo **/
+
+
+
+
+
 /** Working with the image **/
 
 
@@ -29,7 +45,6 @@
   });
   
 /** End image work **/
-
 
 
 
@@ -56,7 +71,7 @@ app.component('prmRequestServicesAfter',{
 	app.component('prmLocationItemAfter',{
     bindings: {parentCtrl: '<'},
     controller: 'FormServiceController',
-	template: ' <span class="formbutton"> \
+	template: '<span class="formbutton"> testing --- {{$ctrl.user}} --- {{$ctrl.userGroup}} \
 	<form ng-if="$ctrl.localCode === \'ANNEX\'"  method="post" action="https://www.library.vanderbilt.edu/forms/custannex.php" target="_blank"> \
 	<input type="hidden" name="lang" value="en_US">\
     <input type="hidden" value="{{$ctrl.title}}" name="title">\
@@ -82,34 +97,29 @@ app.component('prmRequestServicesAfter',{
     var vm = this;
     vm.url = document.location || '';
     var pnx = vm.parentCtrl.item.pnx || false;
-	if (typeof(vm.parentCtrl.item.bestlocation.callNumber)!=="undefined") {
-	    vm.callNumber = vm.parentCtrl.item.delivery.bestlocation.callNumber || '';
-    vm.localName = vm.parentCtrl.item.delivery.bestlocation.mainLocation || '';
-	vm.localCode = vm.parentCtrl.item.delivery.bestlocation.libraryCode || '';
-	} else {
-	var vm.callNumber = "Online";
-	}
+    vm.callNumber = vm.parentCtrl.item.delivery.bestlocation.callNumber ;
+    vm.localName = vm.parentCtrl.item.delivery.bestlocation.mainLocation;
+	vm.localCode = vm.parentCtrl.item.delivery.bestlocation.libraryCode;
     vm.format = pnx.display.type[0] || '';
-    /** if(vm.format === 'article'){
-        vm.source = pnx.display.ispartof[0]+' by '+pnx.addata.au[0];
-    } else {
-        vm.source = 'Published by '+pnx.addata.pub[0]+' and authored by '+pnx.addata.au[0]+' in '+pnx.addata.date[0];
-    }
-	**/
     vm.title = pnx.display.title[0] || '';
     vm.url = document.location || '';
+	/** let rootScope = $scope.$root;
+	var uSMS=rootScope.$$childHead.$ctrl.userSessionManagerService;
+	var jwtData = uSMS.jwtUtilService.getDecodedToken();
+	 console.log(jwtData);
+	var userGroup=parseInt(jwtData.userGroup);
+	var user=jwtData.user;
+	**/
+	//var check = whitelistGroups.indexOf(userGroup);
+			
     vm.$onInit = function () {
-    }
+  		}
+    
 }]);
 
 /** End basic Form **/
 
 
-
-
-	
-	
-	
 	
 
 	
@@ -362,8 +372,8 @@ app.component('prmFullViewAfter', {
   window.browzine = {
     api: "https://public-api.thirdiron.com/public/v1/libraries/519",
     apiKey: "a38db48a-1772-44f3-b8e3-df9f826cf881",
-    primoJournalBrowZineWebLinkText: "Browse Journal Contents",
-    primoArticleBrowZineWebLinkText: "Browse Issue Contents",
+    primoJournalBrowZineWebLinkText: "View Journal Contents",
+    primoArticleBrowZineWebLinkText: "View Issue Contents",
   };
  
   browzine.script = document.createElement("script");
@@ -397,6 +407,13 @@ app.component('prmFullViewAfter', {
   })
  **/
  
+ /*** TESTIN NEW **/
+
+ 
+ 
+ 
+ /** End testing new **/
+ 
 
  (function() {
 
@@ -404,7 +421,6 @@ app.component('prmFullViewAfter', {
     lc.src =  'https://v2.libanswers.com/load_chat.php?hash=c58be3a8ecd194602bebd50fcfe6d49b';
     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(lc, s);
     })();
-
 
 /** Ask a librarian only **/
  /**
@@ -420,6 +436,7 @@ app.component('prmFullViewAfter', {
 
 	
 /** End Libchat **/
+
 
 	
 	/** Close function from line 1 **/
