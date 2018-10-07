@@ -46,13 +46,6 @@
 
 /** End Custom SMS **/
 
-   app.component('prmServiceDetailsAfter', {
-	bindings: {parentCtrl: '<'},
-	controller: 'FormServiceController',
-	template: ' <span> <a href="https://apps.library.vanderbilt.edu/services/source/rec.php?akey={{$ctrl.recordid}}" target="_new"">Source Record</a>  \
-	    </span>  \
-	'});
-
   
 
 
@@ -60,15 +53,14 @@
 /**
 app.component('prmRequestServicesAfter',{
 	**/
-/**
-	app.component('prmLocationItemAfter',{
+/**	app.component('prmLocationItemAfter',{
     bindings: {parentCtrl: '<'},
     controller: 'FormServiceController',
 	template: ' <span class="formbutton"> \
 	<form ng-if="$ctrl.localCode === \'ANNEX\'"  method="post" action="https://www.library.vanderbilt.edu/forms/custannex.php" target="_blank"> \
 	<input type="hidden" name="lang" value="en_US">\
     <input type="hidden" value="{{$ctrl.title}}" name="title">\
-  
+    <input type="hidden" value="{{$ctrl.localName}}" name="location">\
     <input type="hidden" value="{{$ctrl.callNumber}}" name="call"> \
 	<input type="submit" name="submit" class="formbutton" value="Request from Annex"> </form> \
 	<form ng-if="$ctrl.localCode === \'SPEC-COLL\'"  method="post" action="https://www.library.vanderbilt.edu/forms/archives.php" target="_blank"> \
@@ -84,35 +76,28 @@ app.component('prmRequestServicesAfter',{
     <input type="hidden" value="{{$ctrl.callNumber}}" name="call"> \
 	<input type="submit" name="submit" class="formbutton" value="Request for Use in the Reading Room"> </form> </span> \
 	'});
-
 **/
-	
+	/**
 	app.controller('FormServiceController', [function () {
     var vm = this;
     vm.url = document.location || '';
     var pnx = vm.parentCtrl.item.pnx || false;
-//	if (typeof(vm.parentCtrl.item.bestlocation.callNumber)!=="undefined") {
-	vm.callNumber = vm.parentCtrl.item.delivery.bestlocation.callNumber || '';
-    vm.localName = vm.parentCtrl.item.delivery.bestlocation.mainLocation || '';
-	vm.localCode = vm.parentCtrl.item.delivery.bestlocation.libraryCode || '';
-//	} else {
-//	var vm.callNumber = "Online";
-//	}
+	vm.callNumber = vm.parentCtrl.item.delivery.bestlocation.callNumber || 'Online';
+    vm.localName = vm.parentCtrl.item.delivery.bestlocation.mainLocation ||'Online';
+	vm.localCode = vm.parentCtrl.item.delivery.bestlocation.libraryCode || 'Online';
     vm.format = pnx.display.type[0] || '';
-    /** if(vm.format === 'article'){
+    if(vm.format === 'article'){
         vm.source = pnx.display.ispartof[0]+' by '+pnx.addata.au[0];
     } else {
         vm.source = 'Published by '+pnx.addata.pub[0]+' and authored by '+pnx.addata.au[0]+' in '+pnx.addata.date[0];
     }
-	**/
 	
-	vm.recordid = pnx.control.recordid;
     vm.title = pnx.display.title[0] || '';
     vm.url = document.location || '';
     vm.$onInit = function () {
     }
 }]);
-
+**/
 /** End basic Form **/
 
 
