@@ -40,7 +40,7 @@
    app.component('prmActionListAfter', {
 	bindings: {parentCtrl: '<'},
 	controller: 'FormServiceController',
-	template: "<custom-action name=\"text_me\"\n  label=\"Text Me\"\n  index=0\n        icon=\"ic_smartphone_24px\"\n                            icon-set=\"hardware\"\n                            link=\"https://www.library.vanderbilt.edu/forms/textme.php?call={{$ctrl.callNumber}}&location={{$ctrl.localCode}}&title={pnx.display.title}\" />"
+	template: "<custom-action name=\"text_me\"\n                            label=\"Text Me\"\n                            index=0\n                            icon=\"ic_smartphone_24px\"\n                            icon-set=\"hardware\"\n                            link=\"https://library2018.library.vanderbilt.edu/forms/textme.php?call={{$ctrl.callNumber}}&location={{$ctrl.localCode}}&title={pnx.display.title}\" />"
     });
 
 
@@ -53,7 +53,6 @@
 /**
 app.component('prmRequestServicesAfter',{
 	**/
-	/**
 	app.component('prmLocationItemAfter',{
     bindings: {parentCtrl: '<'},
     controller: 'FormServiceController',
@@ -77,40 +76,21 @@ app.component('prmRequestServicesAfter',{
     <input type="hidden" value="{{$ctrl.callNumber}}" name="call"> \
 	<input type="submit" name="submit" class="formbutton" value="Request for Use in the Reading Room"> </form> </span> \
 	'});
-**/
+
 	
 	app.controller('FormServiceController', [function () {
     var vm = this;
     vm.url = document.location || '';
     var pnx = vm.parentCtrl.item.pnx || false;
- /**
-    if (typeof(vm.parentCtrl.item.bestlocation.callNumber)!="undefined") {
-	vm.callNumber = vm.parentCtrl.item.delivery.bestlocation.callNumber || '';
+	if (typeof(vm.parentCtrl.item.bestlocation.callNumber)!=="undefined") {
+	    vm.callNumber = vm.parentCtrl.item.delivery.bestlocation.callNumber || '';
     vm.localName = vm.parentCtrl.item.delivery.bestlocation.mainLocation || '';
-	vm.localCode = vm.parentCtrl.item.delivery.bestlocation.libraryCode || '';
+	vm.localName = vm.parentCtrl.item.delivery.bestlocation.libraryCode || '';
 	} else {
-    vm.callNumber = "Online";
-	vm.localName = "Online";
-	vm.localCode = "Online";
+	var vm.callNumber = "Online";
+	vm.localName = "Internet"
+	vm.localName = "Online" 
 	}
-	
-	**/
-	
-	    if (typeof(vm.parentCtrl.item.bestlocation.callNumber)!="undefined") {
-	vm.callNumber = vm.parentCtrl.item.delivery.bestlocation.callNumber || '';
-    vm.localName = vm.parentCtrl.item.delivery.bestlocation.mainLocation || '';
-	vm.localCode = vm.parentCtrl.item.delivery.bestlocation.libraryCode || '';
-	} else {
-    vm.callNumber = "Online";
-	vm.localName = "Online";
-	vm.localCode = "Online";
-	}
-	
-	vm.callNumber = vm.parentCtrl.item.delivery.bestlocation.callNumber || ' ' ;
-    vm.localName = vm.parentCtrl.item.delivery.bestlocation.mainLocation ;
-	vm.localCode = vm.parentCtrl.item.delivery.bestlocation.libraryCode ;
-
-	
     vm.format = pnx.display.type[0] || '';
     /** if(vm.format === 'article'){
         vm.source = pnx.display.ispartof[0]+' by '+pnx.addata.au[0];
@@ -129,6 +109,7 @@ app.component('prmRequestServicesAfter',{
 
 
 
+	
 	
 	
 	
