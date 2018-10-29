@@ -7,6 +7,34 @@
 
     var app = angular.module('viewCustom', ['angularLoad','customActions']);
 
+	
+	
+	  /** Show development environment **/
+app.controller('prmSearchBarAfterController', ['$location', function($location) {
+    var userSessionManagerService = this.parentCtrl.$scope.$root.$$childHead.$ctrl.userSessionManagerService;
+    var result = userSessionManagerService.jwtUtilService.jwtHelper.decodeToken(userSessionManagerService.getJwt());
+    console.log(result);
+}]);
+  
+  
+app.component('prmSearchBarAfter', {
+    bindings: { parentCtrl: '<' },
+    controller: 'prmSearchBarAfterController',
+    // templateUrl:'/primo-explore/custom/33PUDB_UBM_VU1/html/libqual.html'
+});
+
+  
+  app.component('prmSearchBarAfter', {
+    bindings: {},
+    template: '<div class="hello-world"><span>Development Environment</span></div>'
+  });
+
+  /** End show development environment **/
+  
+  
+	
+	
+	
 /** Browzine Logo **/
 
   app.component('prmAtozSearchBarAfter', {
@@ -46,13 +74,6 @@
 
 /** End Custom SMS **/
 
-   app.component('prmServiceDetailsAfter', {
-	bindings: {parentCtrl: '<'},
-	controller: 'FormServiceController',
-	template: ' <span> <a href="https://apps.library.vanderbilt.edu/services/source/rec.php?akey={{$ctrl.recordid}}" target="_new"">Source Record</a>  \
-	    </span>  \
-	'});
-
   
 
 
@@ -60,7 +81,6 @@
 /**
 app.component('prmRequestServicesAfter',{
 	**/
-/**
 	app.component('prmLocationItemAfter',{
     bindings: {parentCtrl: '<'},
     controller: 'FormServiceController',
@@ -68,7 +88,7 @@ app.component('prmRequestServicesAfter',{
 	<form ng-if="$ctrl.localCode === \'ANNEX\'"  method="post" action="https://www.library.vanderbilt.edu/forms/custannex.php" target="_blank"> \
 	<input type="hidden" name="lang" value="en_US">\
     <input type="hidden" value="{{$ctrl.title}}" name="title">\
-  
+    <input type="hidden" value="{{$ctrl.localName}}" name="location">\
     <input type="hidden" value="{{$ctrl.callNumber}}" name="call"> \
 	<input type="submit" name="submit" class="formbutton" value="Request from Annex"> </form> \
 	<form ng-if="$ctrl.localCode === \'SPEC-COLL\'"  method="post" action="https://www.library.vanderbilt.edu/forms/archives.php" target="_blank"> \
@@ -85,19 +105,14 @@ app.component('prmRequestServicesAfter',{
 	<input type="submit" name="submit" class="formbutton" value="Request for Use in the Reading Room"> </form> </span> \
 	'});
 
-**/
 	
 	app.controller('FormServiceController', [function () {
     var vm = this;
     vm.url = document.location || '';
     var pnx = vm.parentCtrl.item.pnx || false;
-//	if (typeof(vm.parentCtrl.item.bestlocation.callNumber)!=="undefined") {
-	vm.callNumber = vm.parentCtrl.item.delivery.bestlocation.callNumber || '';
-    vm.localName = vm.parentCtrl.item.delivery.bestlocation.mainLocation || '';
-	vm.localCode = vm.parentCtrl.item.delivery.bestlocation.libraryCode || '';
-//	} else {
-//	var vm.callNumber = "Online";
-//	}
+    vm.callNumber = vm.parentCtrl.item.delivery.bestlocation.callNumber ;
+    vm.localName = vm.parentCtrl.item.delivery.bestlocation.mainLocation;
+	vm.localCode = vm.parentCtrl.item.delivery.bestlocation.libraryCode;
     vm.format = pnx.display.type[0] || '';
     /** if(vm.format === 'article'){
         vm.source = pnx.display.ispartof[0]+' by '+pnx.addata.au[0];
@@ -105,10 +120,10 @@ app.component('prmRequestServicesAfter',{
         vm.source = 'Published by '+pnx.addata.pub[0]+' and authored by '+pnx.addata.au[0]+' in '+pnx.addata.date[0];
     }
 	**/
-	
-	vm.recordid = pnx.control.recordid;
     vm.title = pnx.display.title[0] || '';
     vm.url = document.location || '';
+	vm.recordid = vm.control.recordid ;
+	
     vm.$onInit = function () {
     }
 }]);
