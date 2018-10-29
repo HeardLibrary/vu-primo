@@ -9,7 +9,8 @@
 
 	
 	
-	  /** Show development environment **/
+	  /** Start JWT work **/
+
 app.controller('prmSearchBarAfterController', ['$location', function($location) {
     var userSessionManagerService = this.parentCtrl.$scope.$root.$$childHead.$ctrl.userSessionManagerService;
     var result = userSessionManagerService.jwtUtilService.jwtHelper.decodeToken(userSessionManagerService.getJwt());
@@ -17,17 +18,23 @@ app.controller('prmSearchBarAfterController', ['$location', function($location) 
 }]);
   
   
-app.component('prmSearchBarAfter', {
-    bindings: { parentCtrl: '<' },
+app.component('prmOpacAfter', {
+    bindings: { parentCtrl: '<'} ,
     controller: 'prmSearchBarAfterController',
-    // templateUrl:'/primo-explore/custom/33PUDB_UBM_VU1/html/libqual.html'
+     template: '<span> hello </span>'
 });
 
-  
+/** End JWT work **/
+
+	  /** Show development environment **/
+	  
+  /**
   app.component('prmSearchBarAfter', {
     bindings: {},
     template: '<div class="hello-world"><span>Development Environment</span></div>'
-  });
+  }});
+  **/
+  
 
   /** End show development environment **/
   
@@ -65,6 +72,7 @@ app.component('prmSearchBarAfter', {
 
 /**  SMS form **/
 
+
    app.component('prmActionListAfter', {
 	bindings: {parentCtrl: '<'},
 	controller: 'FormServiceController',
@@ -74,13 +82,22 @@ app.component('prmSearchBarAfter', {
 
 /** End Custom SMS **/
 
-  
+/** Local Source record **/
+  app.component('prmServiceDetailsAfter', {
+	bindings: {parentCtrl: '<'},
+	controller: 'FormServiceController',
+  template: '<hr/><span> <a href=\"https://apps.library.vanderbilt.edu/services/source/rec.php?akey={{$ctrl.recordid}}" target=_new> View Source Record </a></span>'
+    });
+/** End Local Source record **/
+
 
 
 /** basic form **/
 /**
 app.component('prmRequestServicesAfter',{
 	**/
+	
+/**
 	app.component('prmLocationItemAfter',{
     bindings: {parentCtrl: '<'},
     controller: 'FormServiceController',
@@ -104,7 +121,7 @@ app.component('prmRequestServicesAfter',{
     <input type="hidden" value="{{$ctrl.callNumber}}" name="call"> \
 	<input type="submit" name="submit" class="formbutton" value="Request for Use in the Reading Room"> </form> </span> \
 	'});
-
+**/
 	
 	app.controller('FormServiceController', [function () {
     var vm = this;
@@ -122,7 +139,7 @@ app.component('prmRequestServicesAfter',{
 	**/
     vm.title = pnx.display.title[0] || '';
     vm.url = document.location || '';
-	vm.recordid = vm.control.recordid ;
+	vm.recordid = pnx.control.recordid;
 	
     vm.$onInit = function () {
     }
