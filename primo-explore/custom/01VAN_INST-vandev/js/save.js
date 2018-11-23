@@ -10,7 +10,7 @@
 	
 	
 	  /** Start JWT work **/
-/**
+
 app.controller('prmSearchBarAfterController', ['$location', function($location) {
     var userSessionManagerService = this.parentCtrl.$scope.$root.$$childHead.$ctrl.userSessionManagerService;
     var result = userSessionManagerService.jwtUtilService.jwtHelper.decodeToken(userSessionManagerService.getJwt());
@@ -21,9 +21,9 @@ app.controller('prmSearchBarAfterController', ['$location', function($location) 
 app.component('prmOpacAfter', {
     bindings: { parentCtrl: '<'} ,
     controller: 'prmSearchBarAfterController',
-     templateUrl: '<span> hello </span>'
+     template: '<span> hello </span>'
 });
-**/
+
 /** End JWT work **/
 
 	  /** Show development environment **/
@@ -82,10 +82,8 @@ app.component('prmOpacAfter', {
 
 /** End Custom SMS **/
 
-/** Local Source record  prmServiceDetailsAfter **/
-
-
-  app.component('prmRecordCollectionPathsAfter', {
+/** Local Source record **/
+  app.component('prmServiceDetailsAfter', {
 	bindings: {parentCtrl: '<'},
 	controller: 'FormServiceController',
   template: '<hr/><span> <a href=\"https://apps.library.vanderbilt.edu/services/source/rec.php?akey={{$ctrl.recordid}}" target=_new> View Source Record </a></span>'

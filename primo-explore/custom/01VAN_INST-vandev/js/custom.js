@@ -10,7 +10,7 @@
 	
 	
 	  /** Start JWT work **/
-
+/**
 app.controller('prmSearchBarAfterController', ['$location', function($location) {
     var userSessionManagerService = this.parentCtrl.$scope.$root.$$childHead.$ctrl.userSessionManagerService;
     var result = userSessionManagerService.jwtUtilService.jwtHelper.decodeToken(userSessionManagerService.getJwt());
@@ -21,23 +21,43 @@ app.controller('prmSearchBarAfterController', ['$location', function($location) 
 app.component('prmOpacAfter', {
     bindings: { parentCtrl: '<'} ,
     controller: 'prmSearchBarAfterController',
-     template: '<span> hello </span>'
+     templateUrl: '<span> hello </span>'
 });
-
+**/
 /** End JWT work **/
 
 	  /** Show development environment **/
 	  
   /**
   app.component('prmSearchBarAfter', {
-    bindings: {},
-    template: '<div class="hello-world"><span>Development Environment</span></div>'
-  }});
+    bindings: { parentCtrl: '<'} ,
+    controller: 'vutestuser',
+    template: '<div class="hello-world"><span>Development Environment -- {{$ctrl.userName}{ -- </span></div>'
+  });
   **/
-  
+
 
   /** End show development environment **/
   
+  /**
+   angular.module('vuUserInfo',[]).controller('vuUserInfoController', [$scope, $element, $q, $http, function($scope, $element, $q, $http) {
+		this.$onInit = function() {
+			let rootScope = $scope;
+	  		let  uSMS=rootScope.$$childHead.$ctrl.userSessionManagerService;
+	  		let jwtData = uSMS.jwtUtilService.getDecodedToken();
+	  		console.log(jwtData);
+	 		var userGroup=parseInt(jwtData.userGroup);
+	  		var user=jwtData.user;
+			return (user);
+		};
+}]).component('prmSearchBarAfter', {
+	        bindings: {parentCtrl: '<'},
+    controller: 'vuUserInfoController',
+    template: "<div> test </div>"
+  });
+
+**/
+
   
 	
 	
@@ -82,8 +102,10 @@ app.component('prmOpacAfter', {
 
 /** End Custom SMS **/
 
-/** Local Source record **/
-  app.component('prmServiceDetailsAfter', {
+/** Local Source record  prmServiceDetailsAfter **/
+
+
+  app.component('prmRecordCollectionPathsAfter', {
 	bindings: {parentCtrl: '<'},
 	controller: 'FormServiceController',
   template: '<hr/><span> <a href=\"https://apps.library.vanderbilt.edu/services/source/rec.php?akey={{$ctrl.recordid}}" target=_new> View Source Record </a></span>'
