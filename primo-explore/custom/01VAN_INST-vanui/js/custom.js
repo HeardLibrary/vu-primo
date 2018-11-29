@@ -30,14 +30,34 @@ app.component('prmOpacAfter', {
 	  
   /**
   app.component('prmSearchBarAfter', {
-    bindings: {},
-    template: '<div class="hello-world"><span>Development Environment</span></div>'
-  }});
+    bindings: { parentCtrl: '<'} ,
+    controller: 'vutestuser',
+    template: '<div class="hello-world"><span>Development Environment -- {{$ctrl.userName}{ -- </span></div>'
+  });
   **/
-  
+
 
   /** End show development environment **/
   
+  /**
+   angular.module('vuUserInfo',[]).controller('vuUserInfoController', [$scope, $element, $q, $http, function($scope, $element, $q, $http) {
+		this.$onInit = function() {
+			let rootScope = $scope;
+	  		let  uSMS=rootScope.$$childHead.$ctrl.userSessionManagerService;
+	  		let jwtData = uSMS.jwtUtilService.getDecodedToken();
+	  		console.log(jwtData);
+	 		var userGroup=parseInt(jwtData.userGroup);
+	  		var user=jwtData.user;
+			return (user);
+		};
+}]).component('prmSearchBarAfter', {
+	        bindings: {parentCtrl: '<'},
+    controller: 'vuUserInfoController',
+    template: "<div> test </div>"
+  });
+
+**/
+
   
 	
 	
@@ -76,7 +96,7 @@ app.component('prmOpacAfter', {
    app.component('prmActionListAfter', {
 	bindings: {parentCtrl: '<'},
 	controller: 'FormServiceController',
-	template: "<custom-action name=\"text_me\"\n                            label=\"Text Me\"\n                            index=0\n                            icon=\"ic_smartphone_24px\"\n                            icon-set=\"hardware\"\n                            link=\"https://library2018.library.vanderbilt.edu/forms/textme.php?call={{$ctrl.callNumber}}&location={{$ctrl.localCode}}&title={pnx.display.title}\" />"
+	template: "<span ng-if=$ctrl.callNumber != \'none\' > <custom-action name=\"text_me\"\n                            label=\"Text Me\"\n                            index=0\n                            icon=\"ic_smartphone_24px\"\n                            icon-set=\"hardware\"\n                            link=\"https://www.library.vanderbilt.edu/forms/textme.php?call={{$ctrl.callNumber}}&location={{$ctrl.localCode}}&title={pnx.display.title}\" /> </span>"
     });
 
 
@@ -88,9 +108,15 @@ app.component('prmOpacAfter', {
   app.component('prmRecordCollectionPathsAfter', {
 	bindings: {parentCtrl: '<'},
 	controller: 'FormServiceController',
-  template: '<hr/><span> <a href=\"https://apps.library.vanderbilt.edu/services/source/rec.php?akey={{$ctrl.recordid}}" target=_new> View Source Record </a></span>'
+    template: '<hr/><span ng-if=$ctrl.source==\'ILS\' > <a href="https://apps.library.vanderbilt.edu/services/source/rec.php?akey={{$ctrl.recordid}}" target=_new> View Source Record </a></span>'
     });
 /** End Local Source record **/
+
+
+
+
+
+
 
 
 
@@ -129,9 +155,12 @@ app.component('prmRequestServicesAfter',{
     var vm = this;
     vm.url = document.location || '';
     var pnx = vm.parentCtrl.item.pnx || false;
-    vm.callNumber = vm.parentCtrl.item.delivery.bestlocation.callNumber ;
-    vm.localName = vm.parentCtrl.item.delivery.bestlocation.mainLocation;
-	vm.localCode = vm.parentCtrl.item.delivery.bestlocation.libraryCode;
+	if(vm.parentCtrl.item.delivery.bestlocation != undefined) {
+	   vm.callNumber = vm.parentCtrl.item.delivery.bestlocation.callNumber ;
+       vm.localName = vm.parentCtrl.item.delivery.bestlocation.mainLocation || '';
+	   vm.localCode = vm.parentCtrl.item.delivery.bestlocation.libraryCode || '' ;
+	} else { vm.callnumber = "none";}
+	
     vm.format = pnx.display.type[0] || '';
     /** if(vm.format === 'article'){
         vm.source = pnx.display.ispartof[0]+' by '+pnx.addata.au[0];
@@ -139,9 +168,11 @@ app.component('prmRequestServicesAfter',{
         vm.source = 'Published by '+pnx.addata.pub[0]+' and authored by '+pnx.addata.au[0]+' in '+pnx.addata.date[0];
     }
 	**/
+	
     vm.title = pnx.display.title[0] || '';
     vm.url = document.location || '';
-	vm.recordid = pnx.control.recordid;
+	vm.recordid = pnx.control.recordid || 'oops';
+	vm.source = pnx.control.sourcesystem || 'oops';
 	
     vm.$onInit = function () {
     }
