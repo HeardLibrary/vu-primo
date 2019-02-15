@@ -9,59 +9,6 @@
 
 	
 	
-	  /** Start JWT work **/
-/**
-app.controller('prmSearchBarAfterController', ['$location', function($location) {
-    var userSessionManagerService = this.parentCtrl.$scope.$root.$$childHead.$ctrl.userSessionManagerService;
-    var result = userSessionManagerService.jwtUtilService.jwtHelper.decodeToken(userSessionManagerService.getJwt());
-    console.log(result);
-}]);
-  
-  
-app.component('prmOpacAfter', {
-    bindings: { parentCtrl: '<'} ,
-    controller: 'prmSearchBarAfterController',
-     templateUrl: '<span> hello </span>'
-});
-**/
-/** End JWT work **/
-
-	  /** Show development environment **/
-	  
-  /**
-  app.component('prmSearchBarAfter', {
-    bindings: { parentCtrl: '<'} ,
-    controller: 'vutestuser',
-    template: '<div class="hello-world"><span>Development Environment -- {{$ctrl.userName}{ -- </span></div>'
-  });
-  **/
-
-
-  /** End show development environment **/
-  
-  /**
-   angular.module('vuUserInfo',[]).controller('vuUserInfoController', [$scope, $element, $q, $http, function($scope, $element, $q, $http) {
-		this.$onInit = function() {
-			let rootScope = $scope;
-	  		let  uSMS=rootScope.$$childHead.$ctrl.userSessionManagerService;
-	  		let jwtData = uSMS.jwtUtilService.getDecodedToken();
-	  		console.log(jwtData);
-	 		var userGroup=parseInt(jwtData.userGroup);
-	  		var user=jwtData.user;
-			return (user);
-		};
-}]).component('prmSearchBarAfter', {
-	        bindings: {parentCtrl: '<'},
-    controller: 'vuUserInfoController',
-    template: "<div> test </div>"
-  });
-
-**/
-
-  
-	
-	
-	
 /** Browzine Logo **/
 
   app.component('prmAtozSearchBarAfter', {
@@ -125,17 +72,11 @@ app.component('prmOpacAfter', {
 app.component('prmRequestServicesAfter',{
 	**/
 	
-/**
+
 	app.component('prmLocationItemAfter',{
     bindings: {parentCtrl: '<'},
     controller: 'FormServiceController',
 	template: ' <span class="formbutton"> \
-	<form ng-if="$ctrl.localCode === \'ANNEX\'"  method="post" action="https://www.library.vanderbilt.edu/forms/custannex.php" target="_blank"> \
-	<input type="hidden" name="lang" value="en_US">\
-    <input type="hidden" value="{{$ctrl.title}}" name="title">\
-    <input type="hidden" value="{{$ctrl.localName}}" name="location">\
-    <input type="hidden" value="{{$ctrl.callNumber}}" name="call"> \
-	<input type="submit" name="submit" class="formbutton" value="Request from Annex"> </form> \
 	<form ng-if="$ctrl.localCode === \'SPEC-COLL\'"  method="post" action="https://www.library.vanderbilt.edu/forms/archives.php" target="_blank"> \
 	<input type="hidden" name="lang" value="en_US">\
     <input type="hidden" value="{{$ctrl.title}}" name="title">\
@@ -149,25 +90,29 @@ app.component('prmRequestServicesAfter',{
     <input type="hidden" value="{{$ctrl.callNumber}}" name="call"> \
 	<input type="submit" name="submit" class="formbutton" value="Request for Use in the Reading Room"> </form> </span> \
 	'});
-**/
+
 	
 	app.controller('FormServiceController', [function () {
     var vm = this;
     vm.url = document.location || '';
     var pnx = vm.parentCtrl.item.pnx || false;
+	if(vm.parentCtrl.item.delivery != undefined) {
 	if(vm.parentCtrl.item.delivery.bestlocation != undefined) {
 	   vm.callNumber = vm.parentCtrl.item.delivery.bestlocation.callNumber ;
        vm.localName = vm.parentCtrl.item.delivery.bestlocation.mainLocation || '';
 	   vm.localCode = vm.parentCtrl.item.delivery.bestlocation.libraryCode || '' ;
 	} else { vm.callnumber = "none";}
+	}
+	/** if(vm.display.type != undefined) {
+    vm.format = pnx.display.type || '';
+	} **/
 	
-    vm.format = pnx.display.type[0] || '';
-    /** if(vm.format === 'article'){
+     if(vm.format === 'article'){
         vm.source = pnx.display.ispartof[0]+' by '+pnx.addata.au[0];
     } else {
         vm.source = 'Published by '+pnx.addata.pub[0]+' and authored by '+pnx.addata.au[0]+' in '+pnx.addata.date[0];
     }
-	**/
+	
 	
     vm.title = pnx.display.title[0] || '';
     vm.url = document.location || '';
