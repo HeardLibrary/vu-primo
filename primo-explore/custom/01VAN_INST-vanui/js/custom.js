@@ -55,7 +55,7 @@
   app.component('prmRecordCollectionPathsAfter', {
 	bindings: {parentCtrl: '<'},
 	controller: 'FormServiceController',
-    template: '<hr/><span ng-if=$ctrl.source==\'ILS\' > <a href="https://apps.library.vanderbilt.edu/services/source/rec.php?akey={{$ctrl.recordid}}" target=_new> View Source Record </a></span>'
+  template: '<hr/><span ng-if=$ctrl.source==\'ILS\' > <a href="https://apps.library.vanderbilt.edu/services/source/rec.php?akey={{$ctrl.recordid}}" target=_new> View Source Record</a></span>'
     });
 /** End Local Source record **/
 
@@ -92,32 +92,35 @@ app.component('prmRequestServicesAfter',{
 	'});
 
 	
+
 	app.controller('FormServiceController', [function () {
     var vm = this;
     vm.url = document.location || '';
     var pnx = vm.parentCtrl.item.pnx || false;
 	if(vm.parentCtrl.item.delivery != undefined) {
 	if(vm.parentCtrl.item.delivery.bestlocation != undefined) {
-	   vm.callNumber = vm.parentCtrl.item.delivery.bestlocation.callNumber ;
+	   vm.callNumber = vm.parentCtrl.item.delivery.bestlocation.callNumber || '';
        vm.localName = vm.parentCtrl.item.delivery.bestlocation.mainLocation || '';
 	   vm.localCode = vm.parentCtrl.item.delivery.bestlocation.libraryCode || '' ;
-	} else { vm.callnumber = "none";}
+		} else { 
+		vm.callnumber = "none";}
 	}
-	/** if(vm.display.type != undefined) {
-    vm.format = pnx.display.type || '';
-	} **/
 	
+	/** if(vm.display.type != undefined) {
+    vm.format = pnx.display.type[0] || '';
+	} **/
+	/**
      if(vm.format === 'article'){
         vm.source = pnx.display.ispartof[0]+' by '+pnx.addata.au[0];
-    } else {
-        vm.source = 'Published by '+pnx.addata.pub[0]+' and authored by '+pnx.addata.au[0]+' in '+pnx.addata.date[0];
-    }
+		} else {
+        vm.source = 'Published by '+pnx.addata.pub+' and authored by '+pnx.addata.au+' in '+pnx.addata.date;
+				}
+	**/
 	
-	
-    vm.title = pnx.display.title[0] || '';
+    vm.title = pnx.display.title[1] || '';
     vm.url = document.location || '';
-	vm.recordid = pnx.control.recordid || 'oops';
-	vm.source = pnx.control.sourcesystem || 'oops';
+	vm.recordid = pnx.control.recordid[0] || 'oops';
+	vm.source = pnx.control.sourcesystem[0] || 'oops';
 	
     vm.$onInit = function () {
     }
