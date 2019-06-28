@@ -64,8 +64,6 @@ This custom View folder can be downloaded from your Primo Back Office, by follow
     
 11. Start your code customizations : 
 
-   - From command line, go to your custom view package folder : `cd primo-explore\custom\VIEW_CODE`
-
    - From command line, run the command : `gulp run --view <the VIEW_CODE folder>` (This will start your local server.)
    
      (For example, running `gulp run --view Auto1` will start the environment taking the customizations from the <b>Auto1</b> folder.)
@@ -74,7 +72,7 @@ This custom View folder can be downloaded from your Primo Back Office, by follow
    - For Primo VE customers, add the --ve flag :
       `gulp run --view <the VIEW_CODE folder> --ve`
    - Open a browser and type in the following URL : `localhost:8003/primo-explore/?vid=your-view-code`  (Example: http://localhost:8003/primo-explore/search?vid=Auto1)
-   - For Primo VE customers open the following URL : `localhost:8003/discovery/?vid=your-view-code`
+   - For Primo VE customers open the following URL : `localhost:8003/discovery/?vid=your-institution-code:your-view-code`
 
    -  Now you should be able to to your customizations with real searches and results, from your previously defined proxy-server. Note: once you start working with this environment, you will discover that the best results are achieved by working in your browser's incognito mode; or you can clear your browser cache before you start the Gulp server.
    
@@ -92,6 +90,8 @@ This custom View folder can be downloaded from your Primo Back Office, by follow
 
       - [JavaScript](https://github.com/ExLibrisGroup/primo-explore-package/tree/master/VIEW_CODE/js "javascript documentation")
 
+
+Note: you have multiple options to edit the css file(custom1.css) and the js file(custom.js), some of them include methods of splitting your developments to seperate files. When using such methods - the css and js file will be overriden by the different files.
 
 
 ## Publishing packages
@@ -113,3 +113,16 @@ Once you finish customizing the package, you can zip up that directory and uploa
     ![BO Image](./help_files/bo.png "BO up")
 
 5. Don't forget to <b>deploy</b> your changes
+
+
+## Publishing Primo-Studio addons
+
+Once you finish customizing the package, you can get it ready to be published to Primo-Studio.
+
+1. In a command line window, navigate to the project base directory : `cd \path\to\your\project\folder\primo-explore-devenv`
+
+2. From command line, run the command : `gulp prepare-addon` You will be prompted with a menu specifying all of the possible packages you can build.
+
+3. Once you finished running the script a folder containing the add-on will be created in `\path\to\your\project\folder\primo-explore-devenv\addons`.
+
+4. From the above folder you can publish your add-on to NPM and to Primo-Studio. For Instructions see: [Primo-Studio add-on tutorial](https://github.com/ExLibrisGroup/Primo-Studio-Addon-Tutorial)

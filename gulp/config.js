@@ -10,10 +10,28 @@ let view;
 let ve;
 let useScss;
 let reinstallNodeModules;
+let saml;
+let cas;
 
 
 function setView(_view) {
     view = _view;
+}
+
+function setSaml(_saml) {
+  saml = _saml;
+}
+
+function getSaml() {
+  return saml;
+}
+
+function setCas(_cas) {
+    cas = _cas;
+}
+
+function getCas() {
+    return cas;
 }
 
 function setUseScss(_useScss) {
@@ -122,12 +140,18 @@ function customNpmJsPath() {
     return `primo-explore/custom/${view}/node_modules/primo-explore*/js/*.js`;
 }
 
+function customNpmDistPath() {
+  return `primo-explore/custom/${view}/node_modules/primo-explore*/dist/*.js`;
+}
+
 
 function customNpmCssPath() {
     return `primo-explore/custom/${view}/node_modules/primo-explore*/css/*.css`;
 }
 
-
+function customNpmHtmlPath() {
+    return `primo-explore/custom/${view}/node_modules/primo-explore*/html/*.html`;
+}
 
 var SERVERS = {
     local: 'http://localhost:8002'
@@ -137,13 +161,11 @@ var SERVERS = {
  * The URL to your sandbox or production Primo instance.
  * For SSL environments (https), the port number (443) must be included.
  *
-  * Examples:
- *   var PROXY_SERVER = 'https://dev-dl.library.vanderbilt.edu:443'
+ * Examples:
+ *   var PROXY_SERVER = 'http://abc-primo.hosted.exlibrisgroup.com'
  *   var PROXY_SERVER = 'https://abc-primo.hosted.exlibrisgroup.com:443'
- *
- *   var PROXY_SERVER = 'https://van-primosb.hosted.exlibrisgroup.com:443';
-**/
-var PROXY_SERVER = 'https://vanderbilt.primo.exlibrisgroup.com:443';
+ */
+var PROXY_SERVER = 'https://catalog.library.vanderbilt.edu:443';
 
 
 let buildParams = {
@@ -162,9 +184,11 @@ let buildParams = {
     customCssPath: customCssPath,
 		customNpmModuleRootDir: customNpmModuleRootDir,
     customNpmJsPath: customNpmJsPath,
+    customNpmDistPath: customNpmDistPath,
     customNpmJsCustomPath: customNpmJsCustomPath,
     customNpmJsModulePath: customNpmJsModulePath,
     customNpmCssPath: customNpmCssPath,
+    customNpmHtmlPath: customNpmHtmlPath,
     customCssMainPath: customCssMainPath,
     customColorsPath: customColorsPath
 };
@@ -183,5 +207,9 @@ module.exports = {
     getBrowserify: getBrowserify,
     setBrowserify: setBrowserify,
     getVe: getVe,
-    setVe: setVe
+    setVe: setVe,
+    getSaml: getSaml,
+    setSaml: setSaml,
+    getCas: getCas,
+    setCas: setCas
 };

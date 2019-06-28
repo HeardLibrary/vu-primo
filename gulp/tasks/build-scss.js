@@ -31,7 +31,7 @@ let gutil = require('gulp-util');
 gulp.task('cleanup',()=> del(['www']));
 
 gulp.task('extract-scss-files', ()=> {
-    let proxy_server = require('../config').PROXY_SERVER;    
+    let proxy_server = require('../config').PROXY_SERVER;
     console.log(proxy_server+'/primo-explore/lib/scsss.tar.gz');
     let url = proxy_server+'/primo-explore/lib/scsss.tar.gz';
     var headers = {
@@ -40,7 +40,12 @@ gulp.task('extract-scss-files', ()=> {
 
     return request({url:url, 'headers': headers})
         .pipe(zlib.createGunzip()) // unzip
-        .pipe(tar.extract('.'))
+        .pipe(tar.extract('.', {map: (header)=>{
+                if (header.name.indexOf('src/main/webapp') > -1){
+                    header.name = header.name.replace('src/main/webapp', 'www');
+                }
+                return header;
+            }}));
 });
 gulp.task('color-variables',() => {
     let colorVariables = JSON.parse(fs.readFileSync(config.viewCssDir() + '/../colors.json', 'utf8'));
@@ -88,7 +93,7 @@ gulp.task('app-css', (cb) => {
  * Please note. The logic of this task will only execute if the run task is
  * executed with the "useScss" parameter, e.g.: gulp run --view UNIBZ --useScss
  */
-gulp.task("watch-custom-scss", () => {
+gulp.task("watch-custom-scss", ['select-view'], () => {
 	if (!useScss()) {
 		return;
 	}
@@ -105,7 +110,7 @@ gulp.task("watch-custom-scss", () => {
  * Please note. The logic of this task will only execute if the run task is
  * executed with the "useScss" parameter, e.g.: gulp run --view UNIBZ --useScss
  */
-gulp.task("custom-scss", () => {
+gulp.task("custom-scss", ['select-view'], () => {
 	if (!useScss()) {
 		return;
 	}
