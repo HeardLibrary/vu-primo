@@ -18,11 +18,6 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
     console.log(result);
   }]);
 
-  app.component('prmOpacAfter', {
-    bindings: { parentCtrl: '<' },
-    controller: 'prmSearchBarAfterController',
-    template: '<span> hello </span>'
-  });
 
   /** End JWT work **/
 
