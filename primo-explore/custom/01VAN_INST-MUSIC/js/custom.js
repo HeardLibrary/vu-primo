@@ -418,8 +418,8 @@ angular.module('googleAnalytics').run(function ($rootScope, $interval, analytics
 });
 angular.module('googleAnalytics').value('analyticsOptions', {
 	enabled: true,
-	siteId: '',
-	defaultTitle: ''
+	siteId: 'UA-333143-41',
+	defaultTitle: 'Vanderbilt University Library Catalog'
 });
 
 /** End Google Analytics **/
