@@ -470,7 +470,8 @@ angular.module('googleAnalytics').value('analyticsOptions', {
  (function() {
 
 	var lc = document.createElement('script'); lc.type = 'text/javascript'; lc.async = 'true';
-    lc.src =  'https://v2.libanswers.com/load_chat.php?hash=c58be3a8ecd194602bebd50fcfe6d49b';
+//    lc.src =  'https://v2.libanswers.com/load_chat.php?hash=c58be3a8ecd194602bebd50fcfe6d49b';
+	lc.src = 'https://v2.libanswers.com/load_chat.php?hash=08328d78c3032c0ae5d5aa973c4b046c';
     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(lc, s);
     })();
 
