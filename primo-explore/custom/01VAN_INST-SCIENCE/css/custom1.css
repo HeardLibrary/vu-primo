@@ -12,6 +12,31 @@ prm-logo .logo-image, prm-logo img {
 
 **/
 
+
+
+ /* LOCAL BANNER */
+
+body::before {
+    content: 'Vanderbilt Libraries\' physical spaces are closed.  Access all library services and resources ONLINE, including Live Chat with a Librarian.';
+    display: inline-block;
+	background: #d8ab4c; 
+	padding: 15px; 
+	position: relative;
+    text-align: center;
+    width: 100%;
+    font-weight: bold;
+	color: #222; 
+	margin-top: 0;
+	font-size: 1.2em;
+	line-height: 1.4em; 	
+	
+	
+	
+}
+
+
+
+
 #browzinelogo {
 
     margin-left: auto; 

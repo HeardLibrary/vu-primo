@@ -40,7 +40,7 @@ The development package allows you to configure :
 
 -  Start view:  gulp run --view 01VAN_INST-vanui --ve  /view http://localhost:8003/discovery/search?vid=01VAN_INST:vanui
 
-
+-  Build:  gulp create-package
 
 
 
