@@ -2,8 +2,8 @@
 "use strict";
 'use strict';
 
-var app = angular.module('viewCustom', ['angularLoad','customActions','googleAnalytics']);
-
+var app = angular.module('viewCustom', ['angularLoad','customActions','googleAnalytics']); 
+ 
 //Auto generated code by primo app store DO NOT DELETE!!! -START-
 /*
     hookName is a place holder with should hold the hook name not including "prm" at the beginning and in upper camel case
