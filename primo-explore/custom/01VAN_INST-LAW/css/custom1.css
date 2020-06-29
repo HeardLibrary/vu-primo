@@ -2198,5 +2198,17 @@ prm-facet-range prm-icon {
     margin-top: -3.5em;
     margin-left: 1em;
 }
+span.umnHathiTrustLink {
+  margin-left: -5px;
+}
+
+span.umnHathiTrustLink md-icon svg {
+  height: 1.2em;
+  filter: grayscale(100%);
+}
+
+span.umnHathiTrustLink:hover md-icon svg {
+  filter: grayscale(0%);
+}
 
 /* helloWorld.css end */
