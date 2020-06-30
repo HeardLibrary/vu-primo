@@ -2,7 +2,7 @@
 "use strict";
 'use strict';
 
-var app = angular.module('viewCustom', ['angularLoad','customActions']); 
+var app = angular.module('viewCustom', ['angularLoad','customActions','googleAnalytics']); 
  
 //Auto generated code by primo app store DO NOT DELETE!!! -START-
 /*
@@ -447,7 +447,7 @@ app.component('addMarcViewPrimoStudio', {
  (function() {
 
 	var lc = document.createElement('script'); lc.type = 'text/javascript'; lc.async = 'true';
-//    lc.src =  'https://v2.libanswers.com/load_chat.php?hash=c58be3a8ecd194602bebd50fcfe6d49b';
+
 	lc.src = 'https://v2.libanswers.com/load_chat.php?hash=08328d78c3032c0ae5d5aa973c4b046c';
     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(lc, s);
     })();
@@ -499,12 +499,12 @@ angular.module('googleAnalytics').value('analyticsOptions', {
 
 /** End Google Analytics **/
 
-/** Start SMS **/
+/** Start custom actions **/
 
 
 app.component('prmActionListAfter', {
 	bindings: {parentCtrl: '<'},
-	controller: 'textMePrimoController',
+	controller: 'vuCustomActionsPrimoController',
 	template: `<custom-action name="text_me"
                             label="Text Me"
                             index=0
@@ -522,8 +522,7 @@ app.component('prmActionListAfter', {
 });
 
 
-app.constant('textMePrimoConfig', [{ "text": "Text Me", "linkBase": "https://www.library.vanderbilt.edu/forms/textme.php" }]);
-app.controller('textMePrimoController', ['textMePrimoConfig', function (configParams) {
+app.controller('vuCustomActionsPrimoController', [function () {
     
      //set the context
      var vm = this;
@@ -533,15 +532,7 @@ app.controller('textMePrimoController', ['textMePrimoConfig', function (configPa
 	 vm.getTitle = getTitle;
 	 vm.getCall = getCall;
 	 vm.getLibrary = getLibrary
-     vm.linkText = getLinkText();
-     vm.linkBase = getLinkBase();
 
-    function getLinkText(){
-       return configParams[0].text;
-    }
-    function getLinkBase(){
-       return configParams[0].linkBase;
-    }
      //define the function that retrieves the record ID
      function getRecordID() {
          return vm.parentCtrl.item.pnx.control.recordid[0];
@@ -668,7 +659,8 @@ angular.module('customActions').factory('customActions', function () {
     /**
      * Process a link into a function to call when the action is clicked.
      * The function will open the processed link in a new tab.
-     * Will replace {pnx.xxx.xxx} expressions with properties from the item.
+     * Tbe pnx fields are requested but does not always work for VE recommend
+	 * defining in the customActionsPrimoController.
      * @param  {string}    link    the original link string from the html
      * @param  {object}    item    the item object obtained from the controller
      * @return {function}          function to call when the action is clicked
@@ -700,7 +692,7 @@ angular.module('customActions').factory('customActions', function () {
 
 /** End Orbis adapted code **/
 
-/** End SMS **/
+/** End Custom actions **/
 	
 
   
