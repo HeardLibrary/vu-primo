@@ -446,9 +446,9 @@ app.component('addMarcViewPrimoStudio', {
  // Libchat start
  (function() {
 
-	var lc = document.createElement('script'); lc.type = 'text/javascript'; lc.async = 'true';
+  var lc = document.createElement('script'); lc.type = 'text/javascript'; lc.async = 'true';
 
-	lc.src = 'https://v2.libanswers.com/load_chat.php?hash=08328d78c3032c0ae5d5aa973c4b046c';
+  lc.src = 'https://v2.libanswers.com/load_chat.php?hash=08328d78c3032c0ae5d5aa973c4b046c';
     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(lc, s);
     })();
 // Libchat end
@@ -458,43 +458,43 @@ app.component('addMarcViewPrimoStudio', {
 
 angular.module('googleAnalytics', []);
 angular.module('googleAnalytics').run(function ($rootScope, $interval, analyticsOptions) {
-	if(analyticsOptions.hasOwnProperty("enabled") && analyticsOptions.enabled) {
-		if(analyticsOptions.hasOwnProperty("siteId") && analyticsOptions.siteId != '') {
-			if(typeof ga === 'undefined') {
-				(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-				(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-				m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-				})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  if(analyticsOptions.hasOwnProperty("enabled") && analyticsOptions.enabled) {
+    if(analyticsOptions.hasOwnProperty("siteId") && analyticsOptions.siteId != '') {
+      if(typeof ga === 'undefined') {
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
-				ga('create', analyticsOptions.siteId, {'alwaysSendReferrer': true});
-				ga('set', 'anonymizeIp', true);
-			}
-		}
-		$rootScope.$on('$locationChangeSuccess', function (event, toState, fromState) {
-			if(analyticsOptions.hasOwnProperty("defaultTitle")) {
-				var documentTitle = analyticsOptions.defaultTitle;
-				var interval = $interval(function () {
-					if(document.title !== '') documentTitle = document.title;
-					if (window.location.pathname.indexOf('openurl') !== -1 || window.location.pathname.indexOf('fulldisplay') !== -1)
-						if (angular.element(document.querySelector('prm-full-view-service-container .item-title>a')).length === 0) return;
-						else documentTitle = angular.element(document.querySelector('prm-full-view-service-container .item-title>a')).text();
-					
-					if(typeof ga !== 'undefined') {
-						if(fromState != toState) ga('set', 'referrer', fromState);
-						ga('set', 'location', toState);
-						ga('set', 'title', documentTitle);
-						ga('send', 'pageview');
-					}
-					$interval.cancel(interval);
-				}, 0);
-			}
-		});
-	}
+        ga('create', analyticsOptions.siteId, {'alwaysSendReferrer': true});
+        ga('set', 'anonymizeIp', true);
+      }
+    }
+    $rootScope.$on('$locationChangeSuccess', function (event, toState, fromState) {
+      if(analyticsOptions.hasOwnProperty("defaultTitle")) {
+        var documentTitle = analyticsOptions.defaultTitle;
+        var interval = $interval(function () {
+          if(document.title !== '') documentTitle = document.title;
+          if (window.location.pathname.indexOf('openurl') !== -1 || window.location.pathname.indexOf('fulldisplay') !== -1)
+            if (angular.element(document.querySelector('prm-full-view-service-container .item-title>a')).length === 0) return;
+            else documentTitle = angular.element(document.querySelector('prm-full-view-service-container .item-title>a')).text();
+          
+          if(typeof ga !== 'undefined') {
+            if(fromState != toState) ga('set', 'referrer', fromState);
+            ga('set', 'location', toState);
+            ga('set', 'title', documentTitle);
+            ga('send', 'pageview');
+          }
+          $interval.cancel(interval);
+        }, 0);
+      }
+    });
+  }
 });
 angular.module('googleAnalytics').value('analyticsOptions', {
-	enabled: true,
-	siteId: 'UA-333143-41',
-	defaultTitle: 'Vanderbilt University Library Catalog'
+  enabled: true,
+  siteId: 'UA-333143-41',
+  defaultTitle: 'Vanderbilt University Library Catalog'
 });
 
 /** End Google Analytics **/
@@ -503,9 +503,9 @@ angular.module('googleAnalytics').value('analyticsOptions', {
 
 
 app.component('prmActionListAfter', {
-	bindings: {parentCtrl: '<'},
-	controller: 'vuCustomActionsPrimoController',
-	template: `<custom-action name="text_me"
+  bindings: {parentCtrl: '<'},
+  controller: 'vuCustomActionsPrimoController',
+  template: `<custom-action name="text_me"
                             label="Text Me"
                             index=0
                             icon="ic_smartphone_24px"
@@ -529,26 +529,26 @@ app.controller('vuCustomActionsPrimoController', [function () {
     
      //binds the function to the scope so it's requestable in the component.
      vm.getRecordID = getRecordID;
-	 vm.getTitle = getTitle;
-	 vm.getCall = getCall;
-	 vm.getLibrary = getLibrary
+   vm.getTitle = getTitle;
+   vm.getCall = getCall;
+   vm.getLibrary = getLibrary
 
      //define the function that retrieves the record ID
      function getRecordID() {
          return vm.parentCtrl.item.pnx.control.recordid[0];
      } 
-	 function getLibrary() {
-		 return vm.parentCtrl.item.delivery.bestlocation.mainLocation;
-	 } 
-	 function getTitle() {
-		return vm.parentCtrl.item.pnx.display.title[0]; 
-	 }
-	 function getCall() {
-		return vm.parentCtrl.item.delivery.bestlocation.callNumber;
-	 }	  
+   function getLibrary() {
+     return vm.parentCtrl.item.delivery.bestlocation.mainLocation;
+   } 
+   function getTitle() {
+    return vm.parentCtrl.item.pnx.display.title[0]; 
+   }
+   function getCall() {
+    return vm.parentCtrl.item.delivery.bestlocation.callNumber;
+   }    
 }]);
 
-	
+  
 /** Start Orbis adapted code **/
 'use strict';
 
@@ -660,7 +660,7 @@ angular.module('customActions').factory('customActions', function () {
      * Process a link into a function to call when the action is clicked.
      * The function will open the processed link in a new tab.
      * Tbe pnx fields are requested but does not always work for VE recommend
-	 * defining in the customActionsPrimoController.
+   * defining in the customActionsPrimoController.
      * @param  {string}    link    the original link string from the html
      * @param  {object}    item    the item object obtained from the controller
      * @return {function}          function to call when the action is clicked
@@ -693,7 +693,7 @@ angular.module('customActions').factory('customActions', function () {
 /** End Orbis adapted code **/
 
 /** End Custom actions **/
-	
+  
 
   
 //End VU Local
@@ -702,4 +702,4 @@ angular.module('customActions').factory('customActions', function () {
 
 
 
-})();
+})();   // End Angular
