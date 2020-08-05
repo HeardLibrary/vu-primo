@@ -437,7 +437,7 @@ app.controller('addMarcViewPrimoStudioController', ['addMarcViewPrimoStudioStudi
 app.component('addMarcViewPrimoStudio', {
      bindings: {parentCtrl: '<'},
      controller: 'addMarcViewPrimoStudioController',
-     template: `<span class="md-subhead"><hr/><a href="{{ $ctrl.linkBase }}{{ $ctrl.getRecordID() }}" target="_blank">{{ $ctrl.linkText }}</a></span>`
+     template: '<span class="md-subhead"><hr/><a href="{{ $ctrl.linkBase }}{{ $ctrl.getRecordID() }}" target="_blank">{{ $ctrl.linkText }}</a></span>'
 
  });
 
@@ -694,6 +694,100 @@ angular.module('customActions').factory('customActions', function () {
 
 /** End Custom actions **/
 	
+/** Start error report form **/
+
+app.component('prmAlmaViewitAfter', {
+   bindings: { parentCtrl: '<' },
+   controller: 'prmAlmaViewitAfterController',
+   templateUrl: '/discovery/custom/01VAN_INST-vanui/html/homepage/report_broken_link.html'
+});
+app.controller('prmAlmaViewitAfterController', [ function() {
+   var vm = this;
+   vm.vul_dialog_content = "<form id='vul_bad_link_form' method='post'>";
+   try {
+      /* add all data except abstract to the form in hidden fields */
+      vm.vul_info = vm.parentCtrl.item.pnx.addata;
+      for(var property_name in vm.vul_info) {
+         if(property_name!='abstract') {
+            vm.vul_dialog_content += "<input type='hidden' id='" + property_name + "' name='" + property_name + "' value='" + vm.vul_info[property_name] + "'>";
+         }
+      }
+
+       if(undefined!=vm.parentCtrl.item.pnx.addata.atitle) {
+         vm.vul_dialog_content += "<div class='vul-dialog-title'><div style='color:green;font-weight:bold;'>" + vm.parentCtrl.item.pnx.addata.atitle + "</div></div>";
+       }
+      /* put the article title, the book title, or the journal title in the dialog (whichever comes first) */
+      if(undefined!=vm.parentCtrl.item.pnx.addata.atitle) {
+         vm.vul_dialog_content += "<div class='vul-dialog-title'><div style='color:green;font-weight:bold;'>" + vm.parentCtrl.item.pnx.addata.atitle + "</div></div>";
+      } else if(undefined!=vm.parentCtrl.item.pnx.addata.btitle) {
+         vm.vul_dialog_content += "<div class='vul-dialog-title'><div style='color:green;font-weight:bold;'>" + vm.parentCtrl.item.pnx.addata.btitle + "</div></div>";
+      } else if(undefined!=vm.parentCtrl.item.pnx.addata.jtitle) {
+         vm.vul_dialog_content += "<div class='vul-dialog-title'><div style='color:green;font-weight:bold;'>" + vm.parentCtrl.item.pnx.addata.jtitle + "</div></div>";
+      }
+      /* put the author data in the dialog (full name or last name/first name) */
+      if(undefined!=vm.parentCtrl.item.pnx.addata.au) {
+         vm.vul_dialog_content += "<div class='vul-dialog-au'>by " + vm.parentCtrl.item.pnx.addata.au + "</div>";
+      } else {
+         if(undefined!=vm.parentCtrl.item.pnx.addata.aulast) {
+            vm.vul_dialog_content += "<div class='vul-dialog-aulast'>by " + vm.parentCtrl.item.pnx.addata.aulast+"</div>";
+            if(undefined!=vm.parentCtrl.item.pnx.addata.aufirst) {
+               vm.vul_dialog_content += "<div class='vul-dialog-aufirst'>" + vm.parentCtrl.item.pnx.addata.aufirst+"</div>";
+            }
+         }
+      }
+      /* put the journal title in the dialog */
+      if(undefined!=vm.parentCtrl.item.pnx.addata.jtitle) {
+         vm.vul_dialog_content += "<div class='vul-dialog-jtitle' style='font-weight:bold;'>" + vm.parentCtrl.item.pnx.addata.jtitle + "</div>";
+      }
+      /* put the issn in the dialog */
+      if(undefined!=vm.parentCtrl.item.pnx.addata.eissn) {
+         vm.vul_dialog_content += "<div class='vul-dialog-eissn'>ISSN: " + vm.parentCtrl.item.pnx.addata.eissn + "</div>";
+      } else if(undefined!=vm.parentCtrl.item.pnx.addata.issn) {
+         vm.vul_dialog_content += "<div class='vul-dialog-issn'>ISSN: " + vm.parentCtrl.item.pnx.addata.issn + "</div>";
+      }
+      /* put the volume in the dialog */
+      if(undefined!=vm.parentCtrl.item.pnx.addata.volume) {
+         vm.vul_dialog_content += "<div class='vul-dialog-volume'>Vol: " + vm.parentCtrl.item.pnx.addata.volume + "</div>";
+      }
+      /* put the issue in the dialog */
+      if(undefined!=vm.parentCtrl.item.pnx.addata.issue) {
+         vm.vul_dialog_content += "<div class='vul-dialog-issue'>Issue: " + vm.parentCtrl.item.pnx.addata.issue + "</div>";email}
+      /* put the pages in the dialog */
+      if(undefined!=vm.parentCtrl.item.pnx.addata.pages) {
+         vm.vul_dialog_content += "<div class='vul-dialog-pages'>Pages: " + vm.parentCtrl.item.pnx.addata.pages + "</div>";
+      } else if(undefined!=vm.parentCtrl.item.pnx.addata.spage) {
+         vm.vul_dialog_content += "<div class='vul-dialog-pages'>Pages: " + vm.parentCtrl.item.pnx.addata.spage;
+         if(undefined!=vm.parentCtrl.item.pnx.addata.epage) {
+            vm.vul_dialog_content += "- " + vm.parentCtrl.item.pnx.addata.epage;
+         }
+         vm.vul_dialog_content += "</div>";
+      }
+      /* put additional questions in the dialog */
+      vm.vul_dialog_content += "<div style='border:1px solid #CECECE;padding:8px;'><div><strong>Which of following best describes the problem with this article?</strong></div><div class='vul-dialog-problem'><select name='badlink_report_option_id' id='badlink_report_option_id' class='' size='1'><option value=''>-- select one --</option><option value='1' >The PDF is blank/missing pages</option><option value='2' >I received a 404/page not found error</option><option value='3' >The website prompted me to pay to access the article</option><option value='4' >The link went to another website other than the selected article</option><option value='5' >Full text for the article was not available, only the abstract or citation</option><option value='6' >Something else went wrong, explain in the comments below</option></select></div></div>";
+      vm.vul_dialog_content += "<div style='border:1px solid #CECECE;padding:8px;'><div><strong>If we locate this item, at what <span style='font-style:italic;color:blue;'>email address</span> may we contact you? </div><div> </strong><label for='cc_email'><input type='checkbox' id='cc_email' name='cc_email' value='1'><span style='font-weight:.8em;'> <strong>Send me a copy of this report </strong></span></label></div><div class='vul-dialog-email'><input type='text' id='badlink_report_email' name='badlink_report_email' value='' style='width:98%;border:1px solid #ECECEC;'></div></div>";
+      vm.vul_dialog_content += "<div style='border:1px solid #CECECE;padding:8px;'><div><strong>Comments (Optional)</strong></div><div class='vul-dialog-comment'><textarea id='badlink_report_comments' name='badlink_report_comments' style='width:98%;'></textarea></div></div>";
+      /* this information is used to build the permalink on our local server */
+      /* there is a permalink available, but I had trouble getting it to transfer to the server without being malfomed */
+      vm.vul_dialog_content += "<input type='hidden' id='vid' name='vid' value='" + vm.parentCtrl.fullViewService.configurationUtil.searchFieldsService._searchParams.vid + "'>";
+      /*
+       vm.vul_dialog_content += "<input type='hidden' id='tab' name='tab' value='" + vm.parentCtrl.fullViewService.configurationUtil.searchFieldsService._searchParams.tab + "'>";
+      */
+      vm.vul_dialog_content += "<input type='hidden' id='docid' name='docid' value='" + vm.parentCtrl.item.pnx.control.recordid + "'>";
+      /*
+      vm.vul_dialog_content += "<input type='hidden' id='context' name='context' value='" + vm.parentCtrl.item.context + "'>";
+      */
+      vm.vul_dialog_content += "<input type='hidden' id='search_scope' name='search_scope' value='" + vm.parentCtrl.fullViewService.configurationUtil.searchFieldsService._searchParams.search_scope + "'>";
+      vm.vul_dialog_content += "<input type='hidden' id='lang' name='lang' value='en'></form>";
+      /* create and open the dialog */
+      document.getElementsByClassName("tingle-modal-box__content")[0].innerHTML = vm.vul_dialog_content;
+   } catch(err){
+      console.log(err);
+   }
+   vm.getText = getText();
+   function getText() {
+      return "Report a broken link";
+   }
+}]);
 
   
 //End VU Local
@@ -703,3 +797,485 @@ angular.module('customActions').factory('customActions', function () {
 
 
 })();
+
+
+/** Start post processing local **/
+
+
+/* !
+* tingle.js
+* @author  robin_parisi
+* @version 0.15.2
+* @url
+*/
+
+/* global define,module */
+(function (root, factory) {
+  if (typeof define === 'function' && define.amd) {
+    define(factory)
+  } else if (typeof exports === 'object') {
+    module.exports = factory()
+  } else {
+    root.tingle = factory()
+  }
+}(this, function () {
+  /* ----------------------------------------------------------- */
+  /* == modal */
+  /* ----------------------------------------------------------- */
+
+  var isBusy = false
+
+  function Modal (options) {
+    var defaults = {
+      onClose: null,
+      onOpen: null,
+      beforeOpen: null,
+      beforeClose: null,
+      stickyFooter: false,
+      footer: false,
+      cssClass: [],
+      closeLabel: 'Close',
+      closeMethods: ['overlay', 'button', 'escape']
+    }
+
+    // extends config
+    this.opts = extend({}, defaults, options)
+
+    // init modal
+    this.init()
+  }
+
+  Modal.prototype.init = function () {
+    if (this.modal) {
+      return
+    }
+
+    _build.call(this)
+    _bindEvents.call(this)
+
+    // insert modal in dom
+    document.body.appendChild(this.modal, document.body.firstChild)
+
+    if (this.opts.footer) {
+      this.addFooter()
+    }
+
+    return this
+  }
+
+  Modal.prototype._busy = function (state) {
+    isBusy = state
+  }
+
+  Modal.prototype._isBusy = function () {
+    return isBusy
+  }
+
+  Modal.prototype.destroy = function () {
+    if (this.modal === null) {
+      return
+    }
+
+    // restore scrolling
+    if (this.isOpen()) {
+      this.close(true)
+    }
+
+    // unbind all events
+    _unbindEvents.call(this)
+
+    // remove modal from dom
+    this.modal.parentNode.removeChild(this.modal)
+
+    this.modal = null
+  }
+
+  Modal.prototype.isOpen = function () {
+    return !!this.modal.classList.contains('tingle-modal--visible')
+  }
+
+  Modal.prototype.open = function () {
+    if (this._isBusy()) return
+    this._busy(true)
+
+    var self = this
+
+    // before open callback
+    if (typeof self.opts.beforeOpen === 'function') {
+      self.opts.beforeOpen()
+    }
+
+    if (this.modal.style.removeProperty) {
+      this.modal.style.removeProperty('display')
+    } else {
+      this.modal.style.removeAttribute('display')
+    }
+
+    // prevent double scroll
+    this._scrollPosition = window.pageYOffset
+    document.body.classList.add('tingle-enabled')
+    document.body.style.top = -this._scrollPosition + 'px'
+
+    // sticky footer
+    this.setStickyFooter(this.opts.stickyFooter)
+
+    // show modal
+    this.modal.classList.add('tingle-modal--visible')
+
+    // onOpen callback
+    if (typeof self.opts.onOpen === 'function') {
+      self.opts.onOpen.call(self)
+    }
+
+    self._busy(false)
+
+    // check if modal is bigger than screen height
+    this.checkOverflow()
+
+    return this
+  }
+
+  Modal.prototype.close = function (force) {
+    if (this._isBusy()) return
+    this._busy(true)
+    force = force || false
+
+    //  before close
+    if (typeof this.opts.beforeClose === 'function') {
+      var close = this.opts.beforeClose.call(this)
+      if (!close) {
+        this._busy(false)
+        return
+      }
+    }
+
+    document.body.classList.remove('tingle-enabled')
+    document.body.style.top = null
+    window.scrollTo({
+      top: this._scrollPosition,
+      behavior: 'instant'
+    })
+
+    this.modal.classList.remove('tingle-modal--visible')
+
+    // using similar setup as onOpen
+    var self = this
+
+    self.modal.style.display = 'none'
+
+    // onClose callback
+    if (typeof self.opts.onClose === 'function') {
+      self.opts.onClose.call(this)
+    }
+
+    // release modal
+    self._busy(false)
+  }
+
+  Modal.prototype.setContent = function (content) {
+    // check type of content : String or Node
+    if (typeof content === 'string') {
+      this.modalBoxContent.innerHTML = content
+    } else {
+      this.modalBoxContent.innerHTML = ''
+      this.modalBoxContent.appendChild(content)
+    }
+
+    if (this.isOpen()) {
+      // check if modal is bigger than screen height
+      this.checkOverflow()
+    }
+
+    return this
+  }
+
+  Modal.prototype.getContent = function () {
+    return this.modalBoxContent
+  }
+
+  Modal.prototype.addFooter = function () {
+    // add footer to modal
+    _buildFooter.call(this)
+
+    return this
+  }
+
+  Modal.prototype.setFooterContent = function (content) {
+    // set footer content
+    this.modalBoxFooter.innerHTML = content
+
+    return this
+  }
+
+  Modal.prototype.getFooterContent = function () {
+    return this.modalBoxFooter
+  }
+
+  Modal.prototype.setStickyFooter = function (isSticky) {
+    // if the modal is smaller than the viewport height, we don't need sticky
+    if (!this.isOverflow()) {
+      isSticky = false
+    }
+
+    if (isSticky) {
+      if (this.modalBox.contains(this.modalBoxFooter)) {
+        this.modalBox.removeChild(this.modalBoxFooter)
+        this.modal.appendChild(this.modalBoxFooter)
+        this.modalBoxFooter.classList.add('tingle-modal-box__footer--sticky')
+        _recalculateFooterPosition.call(this)
+        this.modalBoxContent.style['padding-bottom'] = this.modalBoxFooter.clientHeight + 20 + 'px'
+      }
+    } else if (this.modalBoxFooter) {
+      if (!this.modalBox.contains(this.modalBoxFooter)) {
+        this.modal.removeChild(this.modalBoxFooter)
+        this.modalBox.appendChild(this.modalBoxFooter)
+        this.modalBoxFooter.style.width = 'auto'
+        this.modalBoxFooter.style.left = ''
+        this.modalBoxContent.style['padding-bottom'] = ''
+        this.modalBoxFooter.classList.remove('tingle-modal-box__footer--sticky')
+      }
+    }
+
+    return this
+  }
+
+  Modal.prototype.addFooterBtn = function (label, cssClass, callback) {
+    var btn = document.createElement('button')
+
+    // set label
+    btn.innerHTML = label
+
+    // bind callback
+    btn.addEventListener('click', callback)
+
+    if (typeof cssClass === 'string' && cssClass.length) {
+      // add classes to btn
+      cssClass.split(' ').forEach(function (item) {
+        btn.classList.add(item)
+      })
+    }
+
+    this.modalBoxFooter.appendChild(btn)
+
+    return btn
+  }
+
+  Modal.prototype.resize = function () {
+    // eslint-disable-next-line no-console
+    console.warn('Resize is deprecated and will be removed in version 1.0')
+  }
+
+  Modal.prototype.isOverflow = function () {
+    var viewportHeight = window.innerHeight
+    var modalHeight = this.modalBox.clientHeight
+
+    return modalHeight >= viewportHeight
+  }
+
+  Modal.prototype.checkOverflow = function () {
+    // only if the modal is currently shown
+    if (this.modal.classList.contains('tingle-modal--visible')) {
+      if (this.isOverflow()) {
+        this.modal.classList.add('tingle-modal--overflow')
+      } else {
+        this.modal.classList.remove('tingle-modal--overflow')
+      }
+
+      // tODO: remove offset
+      // _offset.call(this);
+      if (!this.isOverflow() && this.opts.stickyFooter) {
+        this.setStickyFooter(false)
+      } else if (this.isOverflow() && this.opts.stickyFooter) {
+        _recalculateFooterPosition.call(this)
+        this.setStickyFooter(true)
+      }
+    }
+  }
+
+  /* ----------------------------------------------------------- */
+  /* == private methods */
+  /* ----------------------------------------------------------- */
+
+  function closeIcon () {
+    return '<svg viewBox="0 0 10 10" xmlns="http://www.w3.org/2000/svg"><path d="M.3 9.7c.2.2.4.3.7.3.3 0 .5-.1.7-.3L5 6.4l3.3 3.3c.2.2.5.3.7.3.2 0 .5-.1.7-.3.4-.4.4-1 0-1.4L6.4 5l3.3-3.3c.4-.4.4-1 0-1.4-.4-.4-1-.4-1.4 0L5 3.6 1.7.3C1.3-.1.7-.1.3.3c-.4.4-.4 1 0 1.4L3.6 5 .3 8.3c-.4.4-.4 1 0 1.4z" fill="#000" fill-rule="nonzero"/></svg>'
+  }
+
+  function _recalculateFooterPosition () {
+    if (!this.modalBoxFooter) {
+      return
+    }
+    this.modalBoxFooter.style.width = this.modalBox.clientWidth + 'px'
+    this.modalBoxFooter.style.left = this.modalBox.offsetLeft + 'px'
+  }
+
+  function _build () {
+    // wrapper
+    this.modal = document.createElement('div')
+    this.modal.classList.add('tingle-modal')
+
+    // remove cusor if no overlay close method
+    if (this.opts.closeMethods.length === 0 || this.opts.closeMethods.indexOf('overlay') === -1) {
+      this.modal.classList.add('tingle-modal--noOverlayClose')
+    }
+
+    this.modal.style.display = 'none'
+
+    // custom class
+    this.opts.cssClass.forEach(function (item) {
+      if (typeof item === 'string') {
+        this.modal.classList.add(item)
+      }
+    }, this)
+
+    // close btn
+    if (this.opts.closeMethods.indexOf('button') !== -1) {
+      this.modalCloseBtn = document.createElement('button')
+      this.modalCloseBtn.type = 'button'
+      this.modalCloseBtn.classList.add('tingle-modal__close')
+
+      this.modalCloseBtnIcon = document.createElement('span')
+      this.modalCloseBtnIcon.classList.add('tingle-modal__closeIcon')
+      this.modalCloseBtnIcon.innerHTML = closeIcon()
+
+      this.modalCloseBtnLabel = document.createElement('span')
+      this.modalCloseBtnLabel.classList.add('tingle-modal__closeLabel')
+      this.modalCloseBtnLabel.innerHTML = this.opts.closeLabel
+
+      this.modalCloseBtn.appendChild(this.modalCloseBtnIcon)
+      this.modalCloseBtn.appendChild(this.modalCloseBtnLabel)
+    }
+
+    // modal
+    this.modalBox = document.createElement('div')
+    this.modalBox.classList.add('tingle-modal-box')
+
+    // modal box content
+    this.modalBoxContent = document.createElement('div')
+    this.modalBoxContent.classList.add('tingle-modal-box__content')
+
+    this.modalBox.appendChild(this.modalBoxContent)
+
+    if (this.opts.closeMethods.indexOf('button') !== -1) {
+      this.modal.appendChild(this.modalCloseBtn)
+    }
+
+    this.modal.appendChild(this.modalBox)
+  }
+
+  function _buildFooter () {
+    this.modalBoxFooter = document.createElement('div')
+    this.modalBoxFooter.classList.add('tingle-modal-box__footer')
+    this.modalBox.appendChild(this.modalBoxFooter)
+  }
+
+  function _bindEvents () {
+    this._events = {
+      clickCloseBtn: this.close.bind(this),
+      clickOverlay: _handleClickOutside.bind(this),
+      resize: this.checkOverflow.bind(this),
+      keyboardNav: _handleKeyboardNav.bind(this)
+    }
+
+    if (this.opts.closeMethods.indexOf('button') !== -1) {
+      this.modalCloseBtn.addEventListener('click', this._events.clickCloseBtn)
+    }
+
+    this.modal.addEventListener('mousedown', this._events.clickOverlay)
+    window.addEventListener('resize', this._events.resize)
+    document.addEventListener('keydown', this._events.keyboardNav)
+  }
+
+  function _handleKeyboardNav (event) {
+    // escape key
+    if (this.opts.closeMethods.indexOf('escape') !== -1 && event.which === 27 && this.isOpen()) {
+      this.close()
+    }
+  }
+
+  function _handleClickOutside (event) {
+    // on macOS, click on scrollbar (hidden mode) will trigger close event so we need to bypass this behavior by detecting scrollbar mode
+    var scrollbarWidth = this.modal.offsetWidth - this.modal.clientWidth
+    var clickedOnScrollbar = event.clientX >= this.modal.offsetWidth - 15 // 15px is macOS scrollbar default width
+    var isScrollable = this.modal.scrollHeight !== this.modal.offsetHeight
+    if (navigator.platform === 'MacIntel' && scrollbarWidth === 0 && clickedOnScrollbar && isScrollable) {
+      return
+    }
+
+    // if click is outside the modal
+    if (this.opts.closeMethods.indexOf('overlay') !== -1 && !_findAncestor(event.target, 'tingle-modal') &&
+        event.clientX < this.modal.clientWidth) {
+      this.close()
+    }
+  }
+
+  function _findAncestor (el, cls) {
+    while ((el = el.parentElement) && !el.classList.contains(cls));
+    return el
+  }
+
+  function _unbindEvents () {
+    if (this.opts.closeMethods.indexOf('button') !== -1) {
+      this.modalCloseBtn.removeEventListener('click', this._events.clickCloseBtn)
+    }
+    this.modal.removeEventListener('mousedown', this._events.clickOverlay)
+    window.removeEventListener('resize', this._events.resize)
+    document.removeEventListener('keydown', this._events.keyboardNav)
+  }
+
+  /* ----------------------------------------------------------- */
+  /* == helpers */
+  /* ----------------------------------------------------------- */
+
+  function extend () {
+    for (var i = 1; i < arguments.length; i++) {
+      for (var key in arguments[i]) {
+        if (arguments[i].hasOwnProperty(key)) {
+          arguments[0][key] = arguments[i][key]
+        }
+      }
+    }
+    return arguments[0]
+  }
+
+  /* ----------------------------------------------------------- */
+  /* == return */
+  /* ----------------------------------------------------------- */
+
+  return {
+    modal: Modal
+  }
+}))
+
+
+var vul_modal = new tingle.modal({
+   footer: true,
+   stickyFooter: false,
+   closeMethods: ['overlay', 'button', 'escape'],
+   closeLabel: "Close",
+   cssClass: ['custom-class-1', 'custom-class-2'],
+   onOpen: function() {
+      //console.log('modal open');
+   },
+   onClose: function() {
+      //console.log('modal closed');
+   },
+   beforeClose: function() {
+      return true; // close the modal
+   }
+});
+vul_modal.addFooterBtn('Send Report', 'tingle-btn tingle-btn--primary', function() {
+   var form_data = new FormData(document.getElementById("vul_bad_link_form"));
+   var xhttp = new XMLHttpRequest();
+   xhttp.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {
+         alert(this.responseText);
+         return true;
+      }
+   };
+   xhttp.open("POST", "https://apps.library.vanderbilt.edu/services/report-problem/report.php", true);
+   //xhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+   xhttp.send(form_data);
+   vul_modal.close();
+});
+/** End post processing **/
+
