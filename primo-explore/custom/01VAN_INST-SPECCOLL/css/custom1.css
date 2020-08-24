@@ -16,8 +16,8 @@ prm-logo .logo-image, prm-logo img {
 
  /* LOCAL BANNER */
 
-body::before {
-    content: 'Vanderbilt Libraries\' physical spaces are closed.  Access all library services and resources ONLINE, including Live Chat with a Librarian.';
+/* body::before {
+    content: 'Our libraries are opening to the VU Community. Access all library services and resources ONLINE, including Live Chat with a Librarian.';
     display: inline-block;
 	background: #d8ab4c; 
 	padding: 15px; 
@@ -34,7 +34,7 @@ body::before {
 	
 }
 
-
+*/
 
 
 #browzinelogo {
