@@ -1265,7 +1265,7 @@ var vul_modal = new tingle.modal({
       return true; // close the modal
    }
 });
-vul_modal.addFooterBtn('Send Reportxx', 'tingle-btn tingle-btn--primary', function() {
+vul_modal.addFooterBtn('Send Report', 'tingle-btn tingle-btn--primary', function() {
    var form_data = new FormData(document.getElementById("vul_bad_link_form"));
    var xhttp = new XMLHttpRequest();
    xhttp.onreadystatechange = function() {
