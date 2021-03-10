@@ -746,12 +746,12 @@ app.controller('prmAlmaViewitAfterController', [ function() {
          vm.vul_dialog_content += "<div class='vul-dialog-issn'>ISSN: " + vm.parentCtrl.item.pnx.addata.issn + "</div>";
       }
       /* put the volume in the dialog */
-      if(undefined!=vm.parentCtrl.item.pnx.addata.volume) {
-         vm.vul_dialog_content += "<div class='vul-dialog-volume'>Vol: " + vm.parentCtrl.item.pnx.addata.volume + "</div>";
-      }
+     if(undefined!=vm.parentCtrl.item.pnx.addata.volume) {
+        vm.vul_dialog_content += "<div class='vul-dialog-volume'>Vol: " + vm.parentCtrl.item.pnx.addata.volume + "</div>";
+     }
       /* put the issue in the dialog */
       if(undefined!=vm.parentCtrl.item.pnx.addata.issue) {
-         vm.vul_dialog_content += "<div class='vul-dialog-issue'>Issue: " + vm.parentCtrl.item.pnx.addata.issue + "</div>";email}
+         vm.vul_dialog_content += "<div class='vul-dialog-issue'>Issue: " + vm.parentCtrl.item.pnx.addata.issue + "</div>";}
       /* put the pages in the dialog */
       if(undefined!=vm.parentCtrl.item.pnx.addata.pages) {
          vm.vul_dialog_content += "<div class='vul-dialog-pages'>Pages: " + vm.parentCtrl.item.pnx.addata.pages + "</div>";
@@ -1265,7 +1265,7 @@ var vul_modal = new tingle.modal({
       return true; // close the modal
    }
 });
-vul_modal.addFooterBtn('Send Report', 'tingle-btn tingle-btn--primary', function() {
+vul_modal.addFooterBtn('Send Reportxx', 'tingle-btn tingle-btn--primary', function() {
    var form_data = new FormData(document.getElementById("vul_bad_link_form"));
    var xhttp = new XMLHttpRequest();
    xhttp.onreadystatechange = function() {
