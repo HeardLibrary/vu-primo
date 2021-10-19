@@ -38,7 +38,9 @@ The development package allows you to configure :
 
 -  For `colors.json.txt` instructions - please see [CSS](./VIEW_CODE/css/README.md "css documentation") documentation
 
+-  Start view:  gulp run --view 01VAN_INST-vanui --ve  /view http://localhost:8003/discovery/search?vid=01VAN_INST:vanui
 
+-  Build:  gulp create-package
 
 
 
