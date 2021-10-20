@@ -448,7 +448,7 @@ app.component('addMarcViewPrimoStudio', {
 
 app.constant('illiadOptions', {
   "groups": [0,1,2,3],
-  "remoteScript": "https://apps.library.vanderbilt.edu/Illiad/illiad.php",
+  "remoteScript": "https://apps.library.vanderbilt.edu/Illiad/test.php",
   "boxTitle": "My Resource Sharing",
   "illiadURL": "https://illiad.library.vanderbilt.edu/illiad/ill/Logon.html",
   "apiURL": "https://illiad.library.vanderbilt.edu/WebPlatform/Transaction/UserRequests/",
