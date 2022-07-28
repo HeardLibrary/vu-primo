@@ -67,7 +67,7 @@ prm-logo .logo-image, prm-logo img {
 		prm-logo div.product-logo-local {
 			/*display: flex;*/
 			padding: .85em;
-			background: url(https://apps.library.vanderbilt.edu/images/heard-stack.svg) no-repeat 0 0;
+			background: url(https://apps.library.vanderbilt.edu/images/white-v-jah-lib.svg) no-repeat 0 0;
 			width: 190px;
 			/*height: 100px;*/
 			height: 45px;
@@ -86,7 +86,7 @@ prm-logo .logo-image, prm-logo img {
 		}
 		@media (min-width: 601px) { /*min-width: 100em*/
 			prm-logo div.product-logo-local {
-				background: url(https://apps.library.vanderbilt.edu/images/heard-logo.svg) no-repeat 0 0;
+				background: url(https://apps.library.vanderbilt.edu/images/white-v-jah-lib.svg) no-repeat 0 0;
 				width: 400px;
 				/*height: 200px;*/
 				height: 50px;
