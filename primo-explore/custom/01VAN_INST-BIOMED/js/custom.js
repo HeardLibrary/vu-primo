@@ -732,10 +732,90 @@
               }
             }
             */
-  
+           /* adding hidden data manually since the json array seems to have changed in the Aug. 2022 update -- dp  */
+
             if(undefined!=vm.parentCtrl.item.pnx.addata.atitle) {
-              vm.vul_dialog_content += "<div class='vul-dialog-title'><div style='color:green;font-weight:bold;'>" + vm.parentCtrl.item.pnx.addata.atitle + "</div></div>";
+              vm.vul_dialog_content += "<input type='hidden' id='atitle' name='atitle' value='" + vm.parentCtrl.item.pnx.addata.atitle + "'>";
             }
+            if(undefined!=vm.parentCtrl.item.pnx.addata.btitle) {
+              vm.vul_dialog_content += "<input type='hidden' id='btitle' name='btitle' value='" + vm.parentCtrl.item.pnx.addata.btitle + "'>";
+            }
+            if(undefined!=vm.parentCtrl.item.pnx.addata.jtitle) {
+              vm.vul_dialog_content += "<input type='hidden' id='jtitle' name='jtitle' value='" + vm.parentCtrl.item.pnx.addata.jtitle + "'>";
+            }
+            if(undefined!=vm.parentCtrl.item.pnx.addata.issn) {
+              vm.vul_dialog_content += "<input type='hidden' id='issn' name='issn' value='" + vm.parentCtrl.item.pnx.addata.issn + "'>";
+            }
+            if(undefined!=vm.parentCtrl.item.pnx.addata.eissn) {
+              vm.vul_dialog_content += "<input type='hidden' id='eissn' name='eissn' value='" + vm.parentCtrl.item.pnx.addata.eissn + "'>";
+            }
+            if(undefined!=vm.parentCtrl.item.pnx.addata.isbn) {
+              vm.vul_dialog_content += "<input type='hidden' id='isbn' name='isbn' value='" + vm.parentCtrl.item.pnx.addata.isbn + "'>";
+            }
+            if(undefined!=vm.parentCtrl.item.pnx.addata.eisbn) {
+              vm.vul_dialog_content += "<input type='hidden' id='eisbn' name='eisbn' value='" + vm.parentCtrl.item.pnx.addata.eisbn + "'>";
+            }
+            if(undefined!=vm.parentCtrl.item.pnx.addata.tpages) {
+              vm.vul_dialog_content += "<input type='hidden' id='tpages' name='tpages' value='" + vm.parentCtrl.item.pnx.addata.tpages + "'>";
+            }
+            if(undefined!=vm.parentCtrl.item.pnx.addata.spages) {
+              vm.vul_dialog_content += "<input type='hidden' id='spages' name='spages' value='" + vm.parentCtrl.item.pnx.addata.spages + "'>";
+            }
+            if(undefined!=vm.parentCtrl.item.pnx.addata.epages) {
+              vm.vul_dialog_content += "<input type='hidden' id='epages' name='epages' value='" + vm.parentCtrl.item.pnx.addata.epages + "'>";
+            }
+            if(undefined!=vm.parentCtrl.item.pnx.addata.pages) {
+              vm.vul_dialog_content += "<input type='hidden' id='pages' name='pages' value='" + vm.parentCtrl.item.pnx.addata.pages + "'>";
+            }
+            if(undefined!=vm.parentCtrl.item.pnx.addata.oclcid) {
+              vm.vul_dialog_content += "<input type='hidden' id='oclcid' name='oclcid' value='" + vm.parentCtrl.item.pnx.addata.oclcid + "'>";
+            }
+            if(undefined!=vm.parentCtrl.item.pnx.addata.doi) {
+              vm.vul_dialog_content += "<input type='hidden' id='doi' name='doi' value='" + vm.parentCtrl.item.pnx.addata.doi + "'>";
+            }
+            if(undefined!=vm.parentCtrl.item.pnx.addata.issue) {
+              vm.vul_dialog_content += "<input type='hidden' id='issue' name='issue' value='" + vm.parentCtrl.item.pnx.addata.issue + "'>";
+            }
+            if(undefined!=vm.parentCtrl.item.pnx.addata.date) {
+              vm.vul_dialog_content += "<input type='hidden' id='date' name='date' value='" + vm.parentCtrl.item.pnx.addata.date + "'>";
+            }
+            if(undefined!=vm.parentCtrl.item.pnx.addata.risdate) {
+              vm.vul_dialog_content += "<input type='hidden' id='risdate' name='risdate' value='" + vm.parentCtrl.item.pnx.addata.risdate + "'>";
+            }
+            if(undefined!=vm.parentCtrl.item.pnx.addata.volume) {
+              vm.vul_dialog_content += "<input type='hidden' id='volume' name='volume' value='" + vm.parentCtrl.item.pnx.addata.volume + "'>";
+            }
+            if(undefined!=vm.parentCtrl.item.pnx.addata.aulast){
+              vm.vul_dialog_content += "<input type='hidden' id='aulast' name='aulast' value='" + vm.parentCtrl.item.pnx.addata.aulast + "'>";
+            }
+            if(undefined!=vm.parentCtrl.item.pnx.addata.aufirst) {
+              vm.vul_dialog_content += "<input type='hidden' id='aufirst' name='aufirst' value='" + vm.parentCtrl.item.pnx.addata.aufirst + "'>";
+            }
+            if(undefined!=vm.parentCtrl.item.pnx.addata.au) {
+              vm.vul_dialog_content += "<input type='hidden' id='au' name='au' value='" + vm.parentCtrl.item.pnx.addata.au + "'>";
+            }
+            if(undefined!=vm.parentCtrl.item.pnx.addata.format) {
+              vm.vul_dialog_content += "<input type='hidden' id='format' name='format' value='" + vm.parentCtrl.item.pnx.addata.format + "'>";
+            }
+            if(undefined!=vm.parentCtrl.item.pnx.addata.genre) {
+              vm.vul_dialog_content += "<input type='hidden' id='genre' name='genre' value='" + vm.parentCtrl.item.pnx.addata.genre + "'>";
+            }
+            if(undefined!=vm.parentCtrl.item.pnx.addata.ristype) {
+              vm.vul_dialog_content += "<input type='hidden' id='ristype' name='ristype' value='" + vm.parentCtrl.item.pnx.addata.ristype + "'>";
+            }
+            if(undefined!=vm.parentCtrl.item.pnx.addata.cop) {
+              vm.vul_dialog_content += "<input type='hidden' id='cop' name='cop' value='" + vm.parentCtrl.item.pnx.addata.cop + "'>";
+            }
+            if(undefined!=vm.parentCtrl.item.pnx.addata.pub) {
+              vm.vul_dialog_content += "<input type='hidden' id='pub' name='pub' value='" + vm.parentCtrl.item.pnx.addata.pub + "'>";
+            }
+            if(undefined!=vm.parentCtrl.item.pnx.addata.oa) {
+              vm.vul_dialog_content += "<input type='hidden' id='oa name='oa' value='" + vm.parentCtrl.item.pnx.addata.oa + "'>";
+            }
+           
+
+  
+
            /* put the article title, the book title, or the journal title in the dialog (whichever comes first) */
            if(undefined!=vm.parentCtrl.item.pnx.addata.atitle) {
               vm.vul_dialog_content += "<div class='vul-dialog-title'><div style='color:green;font-weight:bold;'>" + vm.parentCtrl.item.pnx.addata.atitle + "</div></div>";
@@ -791,13 +871,13 @@
            /* this information is used to build the permalink on our local server */
            /* there is a permalink available, but I had trouble getting it to transfer to the server without being malfomed */
            vm.vul_dialog_content += "<input type='hidden' id='vid' name='vid' value='" + vm.parentCtrl.fullViewService.configurationUtil.searchFieldsService._searchParams.vid + "'>";
-           /*
+           
             vm.vul_dialog_content += "<input type='hidden' id='tab' name='tab' value='" + vm.parentCtrl.fullViewService.configurationUtil.searchFieldsService._searchParams.tab + "'>";
-           */
+           
            vm.vul_dialog_content += "<input type='hidden' id='docid' name='docid' value='" + vm.parentCtrl.item.pnx.control.recordid + "'>";
-           /*
+           
            vm.vul_dialog_content += "<input type='hidden' id='context' name='context' value='" + vm.parentCtrl.item.context + "'>";
-           */
+           
            vm.vul_dialog_content += "<input type='hidden' id='search_scope' name='search_scope' value='" + vm.parentCtrl.fullViewService.configurationUtil.searchFieldsService._searchParams.search_scope + "'>";
            vm.vul_dialog_content += "<input type='hidden' id='lang' name='lang' value='en'></form>";
            /* create and open the dialog */
