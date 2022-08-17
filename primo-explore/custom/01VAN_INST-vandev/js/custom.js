@@ -20,7 +20,7 @@
   app.component('prmSearchResultAvailabilityLineAfter', {
     bindings: { parentCtrl: '<' },
     controller: 'SearchResultAvailabilityLineAfterController',
-    template: '\n    <primo-studio-browzine parent-ctrl="$ctrl.parentCtrl"></primo-studio-browzine><hathi-trust-availability-studio parent-ctrl="$ctrl.parentCtrl" ignore-copyright="false" entity-id="https://sso-login-uat.vanderbilt.edu"></hathi-trust-availability-studio>\n'
+    template: '\n    <primo-studio-browzine parent-ctrl="$ctrl.parentCtrl"></primo-studio-browzine><hathi-trust-availability-studio parent-ctrl="$ctrl.parentCtrl" ignore-copyright="false" entity-id="https://sso-login.vanderbilt.edu"></hathi-trust-availability-studio>\n'
   
   });
   
