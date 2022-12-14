@@ -456,7 +456,7 @@
   
     var lc = document.createElement('script'); lc.type = 'text/javascript'; lc.async = 'true';
   
-    lc.src = 'https://v2.libanswers.com/load_chat.php?hash=08328d78c3032c0ae5d5aa973c4b046c';
+    lc.src = 'https://libanswers.library.vanderbilt.edu/load_chat.php?hash=08328d78c3032c0ae5d5aa973c4b046c';
       var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(lc, s);
       })();
   // Libchat end
