@@ -2,8 +2,28 @@
   "use strict";
   'use strict';
   
-  var app = angular.module('viewCustom', ['angularLoad','customActions','googleAnalytics']); 
-   
+  var app = angular.module('viewCustom', ['angularLoad','customActions']); 
+  
+  
+/* Google Tag Manager */
+const gtmId = 'G-TWG7VCGMLR'
+function addGTM(doc) {
+ const newScript = doc.createElement('script')
+ const scriptText = `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&amp;l='+l:'';j.async=true;j.src=
+'//www.googletagmanager.com/gtag/js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','${gtmId}');`
+ newScript.innerHTML = scriptText
+ doc.head.append(newScript)
+  
+
+}
+addGTM(document)
+
+/** End Google Tag Manager */
+
+
   //Auto generated code by primo app store DO NOT DELETE!!! -START-
   /*
       hookName is a place holder with should hold the hook name not including "prm" at the beginning and in upper camel case
@@ -473,7 +493,7 @@
           (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
           (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
           m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-          })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+          })(window,document,'script','https://www.googletagmanager.com/gtag/js?id=G-TWG7VCGMLR','ga');
   
           ga('create', analyticsOptions.siteId, {'alwaysSendReferrer': true});
           ga('set', 'anonymizeIp', true);
@@ -502,7 +522,7 @@
   });
   angular.module('googleAnalytics').value('analyticsOptions', {
     enabled: true,
-    siteId: 'UA-333143-41',
+    siteId: 'G-TWG7VCGMLR',
     defaultTitle: 'Vanderbilt University Library Catalog'
   });
   
