@@ -450,15 +450,16 @@
    });
   
   //Add Marc View End 
-  
+
+  // per Melissa Mallon, LibChat service has been discontinued, 05/09/2025, jlm
    // Libchat start
-   (function() {
-  
-    var lc = document.createElement('script'); lc.type = 'text/javascript'; lc.async = 'true';
-  
-    lc.src = 'https://v2.libanswers.com/load_chat.php?hash=08328d78c3032c0ae5d5aa973c4b046c';
-      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(lc, s);
-      })();
+//   (function() {
+//  
+//    var lc = document.createElement('script'); lc.type = 'text/javascript'; lc.async = 'true';
+//  
+//    lc.src = 'https://v2.libanswers.com/load_chat.php?hash=08328d78c3032c0ae5d5aa973c4b046c';
+//      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(lc, s);
+//      })();
   // Libchat end
   
   
